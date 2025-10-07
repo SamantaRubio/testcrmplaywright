@@ -34,7 +34,7 @@ jobs:
             pw-browsers-${{ runner.os }}-
 
       - name: Create .env from secrets
-        run: 
+        run: |
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
