@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const BASE_URL = process.env.BASE_URL || 'https://direct-cash-group-staging-93884dc36ff6.herokuapp.com';
+const BASE_URL = process.env.BASE_URL;
 
 export default defineConfig({
  //  globalSetup: './global-setup.js',
