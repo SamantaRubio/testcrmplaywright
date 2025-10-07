@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.BASE_URL || 'https://direct-cash-group-staging-93884dc36ff6.herokuapp.com';
 
 export default defineConfig({
  //  globalSetup: './global-setup.js',
@@ -25,8 +25,8 @@ export default defineConfig({
   use: {
     baseURL: BASE_URL,
     trace: "on-first-retry",
-    // video: "retain-on-failure",
-    video: "on",
+    video: "retain-on-failure",
+    // video: "on",
     screenshot: "only-on-failure",
     // Anonymous storage by default (we already include it in /storage)
     storageState: "storage/anon.json",
