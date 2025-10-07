@@ -1,0 +1,26 @@
+{
+  "name": "directcashgroupautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "install:browsers": "npx playwright install --with-deps",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen",
+    "format": "npx prettier --write .",
+    "test:smoke": "playwright test tests/smoke"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.54.2",
+    "dotenv": "^17.2.1",
+    "prettier": "^3.6.2"
+  }
+}

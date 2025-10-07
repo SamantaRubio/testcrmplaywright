@@ -1,0 +1,662 @@
+{
+  "config": {
+    "configFile": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/playwright.config.js",
+    "rootDir": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ],
+      [
+        "line",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "setup",
+        "name": "setup",
+        "testDir": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.setup\\.js/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.54.2",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "setup/auth.setup.js",
+      "file": "setup/auth.setup.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "save authenticated storage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1964,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:58:56.814Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/setup-auth.setup.js-save-authenticated-storage-setup/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "89c240118b5b1f5ad4e5-9aa00b45347bae736336",
+          "file": "setup/auth.setup.js",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "regression/globalsearch.spec.js",
+      "file": "regression/globalsearch.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Search for Task",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2974,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:58:59.271Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Task-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-4f73866472656ddb3362",
+          "file": "regression/globalsearch.spec.js",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "Search for Opportunities",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:02.430Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Opportunities-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-9dd5ea8c91572953cd07",
+          "file": "regression/globalsearch.spec.js",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "Search for Accounts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3293,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:05.117Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Accounts-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-ae7a69e84ed9c2bbe31b",
+          "file": "regression/globalsearch.spec.js",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "Search for Contacts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4680,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:08.412Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Contacts-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-42d98998a9c768490b18",
+          "file": "regression/globalsearch.spec.js",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "Search for Email",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3430,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:13.095Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Email-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-aab5938cf5648d9d10cd",
+          "file": "regression/globalsearch.spec.js",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "Search for Phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3414,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:16.527Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Phone-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-81dc717f5a161abc179d",
+          "file": "regression/globalsearch.spec.js",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "No results found",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2579,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:19.943Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-No-results-found-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-ec67c78bfe48c145dcd8",
+          "file": "regression/globalsearch.spec.js",
+          "line": 48,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "regression/Leads/importcsv.spec.js",
+      "file": "regression/Leads/importcsv.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Import valid csv",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 13150,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:58:59.267Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Import-valid-csv-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0b19364f5333501c494d-47f4768ffb7eab57b5ca",
+          "file": "regression/Leads/importcsv.spec.js",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "Handle duplicated csv",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 12895,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:12.601Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Handle-duplicated-csv-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0b19364f5333501c494d-043e83c031b6461557b2",
+          "file": "regression/Leads/importcsv.spec.js",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "Delete imported leads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3363,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:59:25.498Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Delete-imported-leads-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0b19364f5333501c494d-ff9c94d96b2933b0f347",
+          "file": "regression/Leads/importcsv.spec.js",
+          "line": 51,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "smoke/healthcheck.spec.js",
+      "file": "smoke/healthcheck.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Healthcheck",
+          "file": "smoke/healthcheck.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "App renders and shows main container",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1189,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-07T15:58:59.274Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/smoke-healthcheck-Healthch-9a128-rs-and-shows-main-container-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "48dc95e94eaf3fc852ee-54c04ca881603f7ddabb",
+              "file": "smoke/healthcheck.spec.js",
+              "line": 6,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "smoke/login.spec.js",
+      "file": "smoke/login.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "valid login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 2352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-10-07T15:58:59.266Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/smoke-login-valid-login-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7acac509b917cc00c2f5-e06d5c3e05a3be2b77da",
+          "file": "smoke/login.spec.js",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-10-07T15:58:56.484Z",
+    "duration": 32395.399,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

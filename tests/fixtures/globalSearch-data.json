@@ -1,0 +1,21 @@
+{
+    "tasks": {
+      "valid": "Cross-group global forecast Task 25"
+    },
+    "opportunities": {
+        "valid": "Demo Opportunity 3"
+      },
+    "accounts": {
+      "valid": "Dicki-Friesen"
+    },
+    "contacts": {
+      "valid": "Test Stg Emma"
+    },
+    "emails": {
+      "valid": "info@mailinator.com"
+    },
+    "phones": {
+      "valid": "499-493-4524"
+    }
+  }
+  
