@@ -33,16 +33,16 @@ jobs:
           restore-keys: |
             pw-browsers-${{ runner.os }}-
 
-      - name: Install deps & browsers
-        run: |
-          npm ci
-          npx playwright install --with-deps chromium firefox webkit
-
       - name: Create .env from secrets
         run: 
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+
+      - name: Install deps & browsers
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium firefox webkit
 
       - name: Run smoke tests
         env:
@@ -89,16 +89,16 @@ jobs:
           restore-keys: |
             pw-browsers-${{ runner.os }}-
 
-      - name: Install deps & browsers
-        run: |
-          npm ci
-          npx playwright install --with-deps chromium firefox webkit
-
       - name: Create .env from secrets
         run: |
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+
+      - name: Install deps & browsers
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium firefox webkit
 
       - name: Run performance tests
         env:
@@ -145,16 +145,16 @@ jobs:
           restore-keys: |
             pw-browsers-${{ runner.os }}-
 
-      - name: Install deps & browsers
-        run: |
-          npm ci
-          npx playwright install --with-deps chromium firefox webkit
-
       - name: Create .env from secrets
         run: |
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+
+      - name: Install deps & browsers
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium firefox webkit
 
       - name: Run regression tests
         env:
@@ -201,16 +201,16 @@ jobs:
           restore-keys: |
             pw-browsers-${{ runner.os }}-
 
-      - name: Install deps & browsers
-        run: |
-          npm ci
-          npx playwright install --with-deps chromium firefox webkit
-
       - name: Create .env from secrets
         run: |
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+
+      - name: Install deps & browsers
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium firefox webkit
 
       - name: Run e2e tests
         env:
