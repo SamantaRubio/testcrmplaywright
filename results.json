@@ -102,20 +102,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3690,
+                  "duration": 2547,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:17.697Z",
+                  "startTime": "2025-10-07T18:31:35.205Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/setup-auth.setup.js-save-authenticated-storage-setup/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -150,20 +144,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4032,
+                  "duration": 3096,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:22.085Z",
+                  "startTime": "2025-10-07T18:31:38.247Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Task-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -190,20 +178,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2785,
+                  "duration": 3200,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:26.304Z",
+                  "startTime": "2025-10-07T18:31:41.525Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Opportunities-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -230,20 +212,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3243,
+                  "duration": 3494,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:29.091Z",
+                  "startTime": "2025-10-07T18:31:44.727Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Accounts-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -270,20 +246,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2794,
+                  "duration": 2957,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:32.336Z",
+                  "startTime": "2025-10-07T18:31:48.223Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Contacts-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -310,20 +280,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3757,
+                  "duration": 3601,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:35.132Z",
+                  "startTime": "2025-10-07T18:31:51.182Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Email-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -350,20 +314,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10794,
+                  "duration": 2735,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:38.891Z",
+                  "startTime": "2025-10-07T18:31:54.785Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Phone-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -390,20 +348,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2442,
+                  "duration": 2863,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:49.686Z",
+                  "startTime": "2025-10-07T18:31:57.521Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-No-results-found-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -438,20 +390,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 13511,
+                  "duration": 12526,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:22.087Z",
+                  "startTime": "2025-10-07T18:31:38.256Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Import-valid-csv-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -478,20 +424,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 11923,
+                  "duration": 12618,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:35.775Z",
+                  "startTime": "2025-10-07T18:31:50.960Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Handle-duplicated-csv-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -518,20 +458,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 5352,
+                  "duration": 4821,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:47.700Z",
+                  "startTime": "2025-10-07T18:32:03.581Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Delete-imported-leads-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -573,20 +507,14 @@
                       "workerIndex": 3,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 1202,
+                      "duration": 1174,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T16:51:22.079Z",
+                      "startTime": "2025-10-07T18:31:38.245Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/smoke-healthcheck-Healthch-9a128-rs-and-shows-main-container-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -623,20 +551,14 @@
                   "workerIndex": 4,
                   "parallelIndex": 3,
                   "status": "passed",
-                  "duration": 3175,
+                  "duration": 2664,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-07T16:51:22.084Z",
+                  "startTime": "2025-10-07T18:31:38.245Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/smoke-login-valid-login-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -652,8 +574,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-07T16:51:17.276Z",
-    "duration": 35795.592000000004,
+    "startTime": "2025-10-07T18:31:34.856Z",
+    "duration": 33564.802,
     "expected": 13,
     "skipped": 0,
     "unexpected": 0,

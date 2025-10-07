@@ -2,7 +2,16 @@ import { defineConfig, devices } from "@playwright/test";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const BASE_URL = process.env.BASE_URL;
+const raw = process.env.BASE_URL ?? "";
+const BASE_URL = raw.trim();
+
+// Valida que exista y que sea http(s)
+try {
+  const u = new URL(BASE_URL);
+  if (!/^https?:$/.test(u.protocol)) throw new Error('protocol must be http/https');
+} catch (e) {
+  throw new Error(`BASE_URL invalid: "${raw}". Set a valid http(s) URL in .env/Secrets.`);
+}
 
 export default defineConfig({
  //  globalSetup: './global-setup.js',

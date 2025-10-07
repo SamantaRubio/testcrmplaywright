@@ -14,7 +14,7 @@ export class LoginPage extends BasePage {
   // Action Methods: Perform actions using the page's elements
 
   async open() {
-    await this.goto('/users/sign_in'); // uses baseURL from config
+    await this.goto('/'); // uses baseURL from config
     // Makes sure you are in the login page and the form is ready
     await expect(this.usernameInput).toBeVisible();
     await expect(this.passwordInput).toBeVisible();
