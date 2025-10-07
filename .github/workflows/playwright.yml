@@ -234,29 +234,25 @@ jobs:
           if-no-files-found: ignore
 
   # ============================
-  # Notificación para Pull Requests
+  # Notificación para Main
   # ============================
-  notify-slack-pr:
-    if: ${{ always() && github.event_name == 'pull_request' }}
-    needs: [smoke, performance, regression]
+  notify-slack:
+    if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    needs: [smoke, performance, regression, e2e]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     steps:
       - name: Checkout (helper)
         uses: actions/checkout@v4
 
-      # Descargamos SOLO summaries (results.json) para calcular métricas
+      # Descarga de summaries (results.json) de todos los jobs
       - name: Download smoke summary
         uses: actions/download-artifact@v4
         with:
           name: results-smoke
           path: artifacts/smoke
-        continue-on-error: true
-
-      - name: Download performance summary
-        uses: actions/download-artifact@v4
-        with:
-          name: results-performance
-          path: artifacts/performance
         continue-on-error: true
 
       - name: Download regression summary
@@ -266,7 +262,21 @@ jobs:
           path: artifacts/regression
         continue-on-error: true
 
-      # Construimos el resumen (Total y por job)
+      - name: Download performance summary
+        uses: actions/download-artifact@v4
+        with:
+          name: results-performance
+          path: artifacts/performance
+        continue-on-error: true
+
+      - name: Download e2e summary
+        uses: actions/download-artifact@v4
+        with:
+          name: results-e2e
+          path: artifacts/e2e
+        continue-on-error: true
+
+      # Construye el resumen total y por job
       - name: Build summary (Node)
         id: summary
         run: |
@@ -280,7 +290,7 @@ jobs:
             return null;
           }
 
-          const jobs = ['smoke','performance','regression'];
+          const jobs = ['smoke','regression','performance','e2e'];
           const perJob = {};
           const total = { passed:0, failed:0, flaky:0, skipped:0, durationMs:0, tests:0 };
 
@@ -333,14 +343,14 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `summary<<EOF\n${summary}\nEOF\n`);
           NODE
 
-      # Construimos los links al artifact HTML de cada job (si existen)
+      # Genera links a los artifacts HTML (sin descargar zips)
       - name: Build artifact links
         id: links
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -e
-          WANT=("playwright-report-smoke" "playwright-report-performance" "playwright-report-regression")
+          WANT=("playwright-report-smoke" "playwright-report-regression" "playwright-report-performance" "playwright-report-e2e")
           API="https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts?per_page=100"
           data=$(curl -s -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$API")
           make_url () { id="$1"; echo "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${id}"; }
@@ -350,7 +360,8 @@ jobs:
             if [ -n "$id" ] && [ "$id" != "null" ]; then
               url=$(make_url "$id")
               job=${name#playwright-report-}
-              LINES="${LINES}\n  ${job^} Report: ${url}"
+              cap="${job^}" # capitaliza primera letra
+              LINES="${LINES}\n  ${cap} Report: ${url}"
             fi
           done
           {
@@ -359,8 +370,7 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      # Enviamos el mensaje a Slack exactamente como tu ejemplo
-      - name: Post to Slack (PR)
+      - name: Post to Slack (main aggregate)
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
@@ -371,150 +381,14 @@ jobs:
           if [ -n "$REPORT_LINES" ]; then
             TEXT="$TEXT
           $REPORT_LINES"
-                    fi
+          fi
 
-                    jq -n --arg channel "$SLACK_CHANNEL_ID" --arg text "$TEXT" '{
-                      "channel": $channel,
-                      "text": $text
-                    }' > payload.json
+          jq -n --arg channel "$SLACK_CHANNEL_ID" --arg text "$TEXT" '{
+            "channel": $channel,
+            "text": $text
+          }' > payload.json
 
-                    curl -s -X POST "https://slack.com/api/chat.postMessage" \
-                      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-                      -H "Content-type: application/json; charset=utf-8" \
-                      --data @payload.json | jq .
-
-  notify-slack-main:
-    if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    needs: [smoke, e2e]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout (helper)
-        uses: actions/checkout@v4
-
-      - name: Download smoke summary
-        uses: actions/download-artifact@v4
-        with:
-          name: results-smoke
-          path: artifacts/smoke
-        continue-on-error: true
-
-      - name: Download e2e summary
-        uses: actions/download-artifact@v4
-        with:
-          name: results-e2e
-          path: artifacts/e2e
-        continue-on-error: true
-
-      - name: Build summary (Node)
-        id: summary
-        run: |
-          node - <<'NODE'
-          const fs = require('fs');
-          const path = require('path');
-
-          function readJsonSafe(p) {
-            try { if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p,'utf8')); }
-            catch(_) {}
-            return null;
-          }
-
-          const jobs = ['smoke','e2e'];
-          const perJob = {};
-          const total = { passed:0, failed:0, flaky:0, skipped:0, durationMs:0, tests:0 };
-
-          function walkSuite(suite, acc) {
-            if (!suite) return;
-            if (suite.specs) {
-              for (const spec of suite.specs) {
-                for (const test of spec.tests || []) {
-                  const results = test.results || [];
-                  const last = results[results.length - 1] || {};
-                  const status = last.status || test.status || 'skipped';
-                  acc.tests += 1;
-                  if (status === 'passed') acc.passed += 1;
-                  else if (status === 'failed') acc.failed += 1;
-                  else if (status === 'flaky') acc.flaky += 1;
-                  else acc.skipped += 1;
-                  const d = (last.duration || last.durationMs || 0);
-                  acc.durationMs += d;
-                }
-              }
-            }
-            for (const child of (suite.suites || [])) walkSuite(child, acc);
-          }
-
-          for (const job of jobs) {
-            const jsonPath = path.join('artifacts', job, 'results.json');
-            const data = readJsonSafe(jsonPath);
-            if (!data) continue;
-            const acc = { passed:0, failed:0, flaky:0, skipped:0, durationMs:0, tests:0 };
-            for (const s of (data.suites || [])) walkSuite(s, acc);
-            perJob[job] = acc;
-            total.passed += acc.passed;
-            total.failed += acc.failed;
-            total.flaky  += acc.flaky;
-            total.skipped+= acc.skipped;
-            total.tests  += acc.tests;
-            total.durationMs += acc.durationMs;
-          }
-
-          const fmt = (ms)=>{ const s=Math.round(ms/1000); const m=Math.floor(s/60); return `${m}m ${s%60}s`; };
-
-          let lines = [];
-          lines.push(`*Playwright summary – ${new Date().toISOString()}*`);
-          lines.push(`*Total:* ${total.tests} tests | ✅ ${total.passed}  ❌ ${total.failed}  ~ ${total.flaky}  ⏭️ ${total.skipped} | ⏱ ${fmt(total.durationMs)}`);
-          for (const [job,a] of Object.entries(perJob)) {
-            lines.push(`• *${job}*: ${a.tests} | ✅ ${a.passed}  ❌ ${a.failed}  ⏭️ ${a.skipped} | ⏱ ${fmt(a.durationMs)}`);
-          }
-
-          const summary = lines.join('\n');
-          fs.appendFileSync(process.env.GITHUB_OUTPUT, `summary<<EOF\n${summary}\nEOF\n`);
-          NODE
-
-      - name: Build artifact links
-        id: links
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -e
-          WANT=("playwright-report-smoke" "playwright-report-e2e")
-          API="https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts?per_page=100"
-          data=$(curl -s -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$API")
-          make_url () { id="$1"; echo "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${id}"; }
-          LINES=""
-          for name in "${WANT[@]}"; do
-            id=$(echo "$data" | jq -r --arg n "$name" '.artifacts[] | select(.name==$n) | .id' | head -n1)
-            if [ -n "$id" ] && [ "$id" != "null" ]; then
-              url=$(make_url "$id")
-              job=${name#playwright-report-}
-              LINES="${LINES}\n  ${job^} Report: ${url}"
-            fi
-          done
-          {
-            echo "report_lines<<EOF"
-            echo -e "$LINES"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
-
-      - name: Post to Slack (main)
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-          SUMMARY: ${{ steps.summary.outputs.summary }}
-          REPORT_LINES: ${{ steps.links.outputs.report_lines }}
-        run: |
-          TEXT="$SUMMARY"
-          if [ -n "$REPORT_LINES" ]; then
-            TEXT="$TEXT
-            $REPORT_LINES"
-                      fi
-
-                      jq -n --arg channel "$SLACK_CHANNEL_ID" --arg text "$TEXT" '{
-                        "channel": $channel,
-                        "text": $text
-                      }' > payload.json
-
-                      curl -s -X POST "https://slack.com/api/chat.postMessage" \
-                        -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-                        -H "Content-type: application/json; charset=utf-8" \
-                        --data @payload.json | jq .
+          curl -s -X POST "https://slack.com/api/chat.postMessage" \
+            -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+            -H "Content-type: application/json; charset=utf-8" \
+            --data @payload.json | jq .
