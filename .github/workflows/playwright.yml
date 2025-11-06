@@ -38,6 +38,9 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+          echo "GF_WEBHOOK_URL=${{ secrets.GF_WEBHOOK_URL }}" >> .env
+          echo "GRAVITYFORMS_TOKEN=${{ secrets.GRAVITYFORMS_TOKEN }}" >> .env
+          echo "GRAVITY_FORMS_APPLICATION_URL=${{ secrets.GRAVITY_FORMS_APPLICATION_URL }}" >> .env
 
       - name: Install deps & browsers
         run: |
@@ -94,6 +97,9 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+          echo "GF_WEBHOOK_URL=${{ secrets.GF_WEBHOOK_URL }}" >> .env
+          echo "GRAVITYFORMS_TOKEN=${{ secrets.GRAVITYFORMS_TOKEN }}" >> .env
+          echo "GRAVITY_FORMS_APPLICATION_URL=${{ secrets.GRAVITY_FORMS_APPLICATION_URL }}" >> .env
 
       - name: Install deps & browsers
         run: |
@@ -150,6 +156,9 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+          echo "GF_WEBHOOK_URL=${{ secrets.GF_WEBHOOK_URL }}" >> .env
+          echo "GRAVITYFORMS_TOKEN=${{ secrets.GRAVITYFORMS_TOKEN }}" >> .env
+          echo "GRAVITY_FORMS_APPLICATION_URL=${{ secrets.GRAVITY_FORMS_APPLICATION_URL }}" >> .env
 
       - name: Install deps & browsers
         run: |
@@ -206,6 +215,9 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
           echo "ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}" >> .env
           echo "ADMIN_PSW=${{ secrets.ADMIN_PSW }}" >> .env
+          echo "GF_WEBHOOK_URL=${{ secrets.GF_WEBHOOK_URL }}" >> .env
+          echo "GRAVITYFORMS_TOKEN=${{ secrets.GRAVITYFORMS_TOKEN }}" >> .env
+          echo "GRAVITY_FORMS_APPLICATION_URL=${{ secrets.GRAVITY_FORMS_APPLICATION_URL }}" >> .env
 
       - name: Install deps & browsers
         run: |

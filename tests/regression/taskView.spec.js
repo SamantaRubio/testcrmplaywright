@@ -61,12 +61,12 @@ test('Edit inline Priority on row', async ({ page }) => {
   await taskPage.expectPriorityInlineByTaskName(updatedName, 'Medium');
 });
 
-// test('Edit due date via calendar', async ({ page }) => {
-//   const taskPage = new TaskPage(page);
-//   await taskPage.open();
-//   await taskPage.searchByName(updatedName);
-//   await taskPage.pickDateFromCalendarByTaskName(updatedName, '2026-01-01');
-// });
+test('Edit due date via calendar', async ({ page }) => {
+  const taskPage = new TaskPage(page);
+  await taskPage.open();
+  await taskPage.searchByName(updatedName);
+  await taskPage.pickDateFromCalendarByTaskName(updatedName, '2026-01-01');
+});
 
 test('Mark Task as Completed', async ({ page }) => {
   const taskPage = new TaskPage(page);
@@ -86,13 +86,13 @@ test('Reopen Task', async ({ page }) => {
   await taskPage.expectStatusByTaskName(updatedName, 'Open');
 });
 
-// test('Edit date to Overdue date', async ({ page }) => {
-//   const taskPage = new TaskPage(page);
-//   await taskPage.open();
-//   await taskPage.searchByName(updatedName);
-//   await taskPage.pickDateFromCalendarByTaskName(updatedName, '2025-02-01');
-//   await taskPage.expectStatusByTaskName(updatedName, 'Overdue');
-// });
+test('Edit date to Overdue date', async ({ page }) => {
+  const taskPage = new TaskPage(page);
+  await taskPage.open();
+  await taskPage.searchByName(updatedName);
+  await taskPage.pickDateFromCalendarByTaskName(updatedName, '2025-02-01');
+  await taskPage.expectStatusByTaskName(updatedName, 'Overdue');
+});
 
 test('Delete Task from actions menu', async ({ page }) => {
   const taskPage = new TaskPage(page);
