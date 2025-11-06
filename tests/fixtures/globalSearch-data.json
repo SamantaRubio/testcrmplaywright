@@ -11,11 +11,14 @@
     "contacts": {
       "valid": "Test Stg Emma"
     },
+    "leads": {
+      "valid": "Do Not Delete"
+    },
     "emails": {
-      "valid": "info@mailinator.com"
+      "valid": "samanta.rubio+donterase@magmalabs.io"
     },
     "phones": {
-      "valid": "499-493-4524"
+      "valid": "+521234567890"
     }
   }
   

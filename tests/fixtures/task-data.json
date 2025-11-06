@@ -1,0 +1,22 @@
+{
+    "create": {
+      "relatedQuery": "John Crane",
+      "assignedToLabel": "Guy J.",
+      "dueDate": "20/11/2025",
+      "priorityLabel": "Low",
+      "bucketLabel": "Due ASAP",
+      "description": "Task created by Playwright"
+    },
+    "edit": {
+      "relatedQuery": "John Dent",
+      "assignedToLabel": "Mariana Ochoa",
+      "dueDate": "21/12/2025",
+      "priorityLabel": "High",
+      "bucketLabel": "Due ASAP",
+      "description": "Task updated by Playwright"
+    },
+    "editInline": {
+      "isodate":"01/01/2026"
+    }
+}
+  

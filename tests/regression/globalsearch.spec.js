@@ -8,6 +8,7 @@ const categories = [
   { type: 'Opportunities', value: searchData.opportunities.valid, selectorType: 'h1' },
   { type: 'Accounts',      value: searchData.accounts.valid,      selectorType: 'h1' },
   { type: 'Contacts',      value: searchData.contacts.valid,      selectorType: 'h1' },
+  { type: 'Leads',         value: searchData.leads.valid,         selectorType: 'h1' },
   { type: 'Email',         value: searchData.emails.valid,        selectorType: 'mailto' },
   { type: 'Phone',         value: searchData.phones.valid,        selectorType: 'tel' }
 ];
@@ -19,7 +20,11 @@ for (const item of categories) {
     // Search
     await gs.openAndType(item.value);
     await gs.waitForAnyResult();
-    await gs.selectFirstResult();
+    if (item.type === 'Contacts') {
+      await gs.selectSecondResult();
+    } else {
+      await gs.selectFirstResult();
+    }
 
     // Validations
     switch (item.selectorType) {

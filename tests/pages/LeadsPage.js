@@ -14,7 +14,6 @@ export class LeadsPage extends BasePage {
 
     async open() {
         await this.goto('/leads');
-        
     }
 
     async uploadCsvAndProcess({ filePath, tag, routePattern = /\/api\/leads\/import/ }) {

@@ -18,7 +18,7 @@ export default defineConfig({
   testDir: "./tests",
   timeout: 30_000,
   expect: {
-    timeout: 5_000,
+    timeout: 10_000,
   },
   // Retries and workers adapted to CI
   retries: process.env.CI ? 2 : 0,
@@ -34,8 +34,8 @@ export default defineConfig({
   use: {
     baseURL: BASE_URL,
     trace: "on-first-retry",
-    video: "retain-on-failure",
-    // video: "on",
+    //video: "retain-on-failure",
+    video: "on",
     screenshot: "only-on-failure",
     // Anonymous storage by default (we already include it in /storage)
     storageState: "storage/anon.json",

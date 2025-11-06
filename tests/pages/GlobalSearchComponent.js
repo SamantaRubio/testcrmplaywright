@@ -31,6 +31,12 @@ export class GlobalSearch extends BasePage {
     await this.items.first().click();
   }
 
+  async selectSecondResult() {
+    const count = await this.items.count();
+    if (count < 2) throw new Error('Less than 2 results in search dropdown');
+    await this.items.nth(1).click(); // índice 1 = segundo elemento (0-based)
+  }
+
   async selectResultByText(text) {
     await this.items.filter({ hasText: text }).first().click();
   }

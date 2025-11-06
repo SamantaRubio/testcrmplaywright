@@ -1,0 +1,32 @@
+{
+  "business": {
+    "company": "Playwright Company",
+    "entity": "LLC",
+    "inception": "01/01/2020",
+    "street": "811 W Live Oak St",
+    "city": "Austin",
+    "state": "Texas",
+    "zip": "78704-5032",
+    "products": "Software QA Services"
+  },
+  "owner": {
+    "first": "Owner",
+    "last": "Playwright",
+    "email": "samanta.rubio@magmalabs.io",
+    "ssn": "123-45-6789",
+    "dob": "01/01/1990",
+    "homeStreet": "1301 West Oltorf Street",
+    "homeCity": "Austin",
+    "homeState": "Texas",
+    "homeZip": "78704-5368",
+    "ownership": "100"
+  },
+  "funding": { "capital": "25000" },
+  "pdfs": [
+    "tests/fixtures/BankStatement1.pdf",
+    "tests/fixtures/BankStatement2.pdf",
+    "tests/fixtures/BankStatement3.pdf"
+  ]
+}
+
+  
