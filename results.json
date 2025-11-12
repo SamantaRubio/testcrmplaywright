@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 4
     },
     "preserveOutput": "always",
     "reporter": [
@@ -44,7 +44,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 4
         },
         "id": "setup",
         "name": "setup",
@@ -60,7 +60,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 4
         },
         "id": "desktop-chromium",
         "name": "desktop-chromium",
@@ -102,12 +102,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3990,
+                  "duration": 2102,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:36:56.795Z",
+                  "startTime": "2025-11-12T22:14:58.799Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -129,13 +129,127 @@
       ]
     },
     {
-      "title": "regression/taskView.spec.js",
-      "file": "regression/taskView.spec.js",
+      "title": "e2e/healthcheck.spec.js",
+      "file": "e2e/healthcheck.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Healthcheck",
+          "file": "e2e/healthcheck.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "App renders and shows main container",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1335,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-12T22:15:01.385Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/e2e-healthcheck-Healthchec-68746-rs-and-shows-main-container-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "70993876c934ff42b02d-b722643ce2fe5dd154d8",
+              "file": "e2e/healthcheck.spec.js",
+              "line": 6,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "performance/healthcheck.spec.js",
+      "file": "performance/healthcheck.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Healthcheck",
+          "file": "performance/healthcheck.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "App renders and shows main container",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1298,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-12T22:15:01.385Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/performance-healthcheck-He-ec333-rs-and-shows-main-container-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6d0f264b1838244e5657-d8ed753cce6f63d08029",
+              "file": "performance/healthcheck.spec.js",
+              "line": 6,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression/globalsearch.spec.js",
+      "file": "regression/globalsearch.spec.js",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Create Task",
+          "title": "Search for Task",
           "ok": true,
           "tags": [],
           "tests": [
@@ -147,15 +261,424 @@
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 6689,
+                  "duration": 3008,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:37:01.973Z",
+                  "startTime": "2025-11-12T22:15:01.390Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Task-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-4f73866472656ddb3362",
+          "file": "regression/globalsearch.spec.js",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "Search for Opportunities",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 3795,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:04.583Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Opportunities-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-9dd5ea8c91572953cd07",
+          "file": "regression/globalsearch.spec.js",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "Search for Accounts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 3540,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:08.381Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Accounts-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-ae7a69e84ed9c2bbe31b",
+          "file": "regression/globalsearch.spec.js",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "Search for Contacts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 2972,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:11.922Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Contacts-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-42d98998a9c768490b18",
+          "file": "regression/globalsearch.spec.js",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "Search for Leads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 2970,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:14.898Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Leads-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-cc6b6cb18565bfcf1927",
+          "file": "regression/globalsearch.spec.js",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "Search for Email",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 3377,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:17.869Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Email-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-aab5938cf5648d9d10cd",
+          "file": "regression/globalsearch.spec.js",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "Search for Phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 3849,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:21.248Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-Search-for-Phone-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-81dc717f5a161abc179d",
+          "file": "regression/globalsearch.spec.js",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "No results found",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 3338,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:25.099Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-globalsearch-No-results-found-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07d6665193af1c1aef2c-ec67c78bfe48c145dcd8",
+          "file": "regression/globalsearch.spec.js",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "regression/GravityFormsApplication.spec.js",
+      "file": "regression/GravityFormsApplication.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Gravity forms -> CRM verification",
+          "file": "regression/GravityFormsApplication.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "submit external application and verify in CRM",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 15428,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Open and fill Gravity Forms",
+                          "duration": 14688,
+                          "steps": [
+                            {
+                              "title": "Expect \"✅ BankStatement1.pdf cargado correctamente.\"",
+                              "duration": 15
+                            },
+                            {
+                              "title": "Expect \"✅ BankStatement2.pdf cargado correctamente.\"",
+                              "duration": 14
+                            },
+                            {
+                              "title": "Expect \"✅ BankStatement3.pdf cargado correctamente.\"",
+                              "duration": 4
+                            },
+                            {
+                              "title": "Verify records in CRM via Global Search",
+                              "duration": 7598
+                            }
+                          ]
+                        }
+                      ],
+                      "startTime": "2025-11-12T22:15:01.400Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-GravityFormsApp-f11c8-plication-and-verify-in-CRM-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "42f64f83061393f1f065-956813d3280690f4e77c",
+              "file": "regression/GravityFormsApplication.spec.js",
+              "line": 12,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression/taskView.spec.js",
+      "file": "regression/taskView.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Create Task",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 500000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:02.893Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -171,7 +694,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-c845b9292aa18550015d",
           "file": "regression/taskView.spec.js",
-          "line": 9,
+          "line": 10,
           "column": 1
         },
         {
@@ -180,22 +703,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 4882,
+                  "duration": 6012,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:37:08.957Z",
+                  "startTime": "2025-11-12T22:15:08.980Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -211,7 +734,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-13a87be35175149a7cc6",
           "file": "regression/taskView.spec.js",
-          "line": 22,
+          "line": 23,
           "column": 1
         },
         {
@@ -220,22 +743,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 12124,
+                  "duration": 11436,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:37:13.842Z",
+                  "startTime": "2025-11-12T22:15:14.994Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -251,7 +774,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-cd0300c216ba8a1d059a",
           "file": "regression/taskView.spec.js",
-          "line": 28,
+          "line": 29,
           "column": 1
         },
         {
@@ -260,22 +783,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 8433,
+                  "duration": 6136,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:37:25.969Z",
+                  "startTime": "2025-11-12T22:15:26.431Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -291,7 +814,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-a5fda9f68d09608505e5",
           "file": "regression/taskView.spec.js",
-          "line": 48,
+          "line": 49,
           "column": 1
         },
         {
@@ -300,22 +823,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 8133,
+                  "duration": 6266,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:37:34.404Z",
+                  "startTime": "2025-11-12T22:15:32.568Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -331,7 +854,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-25aa15763e6ab331a9a6",
           "file": "regression/taskView.spec.js",
-          "line": 56,
+          "line": 57,
           "column": 1
         },
         {
@@ -340,22 +863,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 7418,
+                  "duration": 6678,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:37:42.539Z",
+                  "startTime": "2025-11-12T22:15:38.835Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -371,7 +894,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-4111b13d4aad32ed0e46",
           "file": "regression/taskView.spec.js",
-          "line": 64,
+          "line": 65,
           "column": 1
         },
         {
@@ -380,22 +903,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 14045,
+                  "duration": 10047,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:37:49.959Z",
+                  "startTime": "2025-11-12T22:15:45.514Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -411,7 +934,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-5cf39494d99e61382270",
           "file": "regression/taskView.spec.js",
-          "line": 71,
+          "line": 72,
           "column": 1
         },
         {
@@ -420,22 +943,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 11218,
+                  "duration": 10239,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:38:04.006Z",
+                  "startTime": "2025-11-12T22:15:55.562Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -451,7 +974,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-faaeea9ee858e886f9ab",
           "file": "regression/taskView.spec.js",
-          "line": 80,
+          "line": 81,
           "column": 1
         },
         {
@@ -460,22 +983,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 7495,
+                  "duration": 6689,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:38:15.227Z",
+                  "startTime": "2025-11-12T22:16:05.804Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -491,47 +1014,81 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-e1f4c5a84ea0dfccb89b",
           "file": "regression/taskView.spec.js",
-          "line": 89,
+          "line": 90,
           "column": 1
         },
         {
           "title": "Delete Task from actions menu",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 10872,
-                  "errors": [],
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 16787,
+                  "error": {
+                    "message": "Error: \u001b[31mTimed out 10000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m()\u001b[22m\n\nLocator: getByTestId('tasks-table').locator('tbody [data-controller=\"task-actions\"] [data-task-actions-target=\"button\"]').locator('xpath=ancestor::tr').first()\nExpected: hidden\nReceived: visible\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('tasks-table').locator('tbody [data-controller=\"task-actions\"] [data-task-actions-target=\"button\"]').locator('xpath=ancestor::tr').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <tr id=\"task-row-176\" data-table-sort-target=\"row\" class=\"hover:bg-gray-50 transition-colors duration-200 bg-red-50\">…</tr>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 10000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m()\u001b[22m\n\nLocator: getByTestId('tasks-table').locator('tbody [data-controller=\"task-actions\"] [data-task-actions-target=\"button\"]').locator('xpath=ancestor::tr').first()\nExpected: hidden\nReceived: visible\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('tasks-table').locator('tbody [data-controller=\"task-actions\"] [data-task-actions-target=\"button\"]').locator('xpath=ancestor::tr').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <tr id=\"task-row-176\" data-table-sort-target=\"row\" class=\"hover:bg-gray-50 transition-colors duration-200 bg-red-50\">…</tr>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n    at TaskPage.deleteTaskByName (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:484:23)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/taskView.spec.js:102:3",
+                    "location": {
+                      "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js",
+                      "column": 23,
+                      "line": 484
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpages/TaskPage.js:484\n\n\u001b[0m \u001b[90m 482 |\u001b[39m     ])\u001b[33m;\u001b[39m\n \u001b[90m 483 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 484 |\u001b[39m     \u001b[36mawait\u001b[39m expect(row)\u001b[33m.\u001b[39mtoBeHidden()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 485 |\u001b[39m   }\n \u001b[90m 486 |\u001b[39m\n \u001b[90m 487 |\u001b[39m   \u001b[36masync\u001b[39m expectTaskNotInList(name) {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js",
+                        "column": 23,
+                        "line": 484
+                      },
+                      "message": "Error: \u001b[31mTimed out 10000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m()\u001b[22m\n\nLocator: getByTestId('tasks-table').locator('tbody [data-controller=\"task-actions\"] [data-task-actions-target=\"button\"]').locator('xpath=ancestor::tr').first()\nExpected: hidden\nReceived: visible\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('tasks-table').locator('tbody [data-controller=\"task-actions\"] [data-task-actions-target=\"button\"]').locator('xpath=ancestor::tr').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <tr id=\"task-row-176\" data-table-sort-target=\"row\" class=\"hover:bg-gray-50 transition-colors duration-200 bg-red-50\">…</tr>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages/TaskPage.js:484\n\n\u001b[0m \u001b[90m 482 |\u001b[39m     ])\u001b[33m;\u001b[39m\n \u001b[90m 483 |\u001b[39m   \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 484 |\u001b[39m     \u001b[36mawait\u001b[39m expect(row)\u001b[33m.\u001b[39mtoBeHidden()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 485 |\u001b[39m   }\n \u001b[90m 486 |\u001b[39m\n \u001b[90m 487 |\u001b[39m   \u001b[36masync\u001b[39m expectTaskNotInList(name) {\u001b[0m\n\u001b[2m    at TaskPage.deleteTaskByName (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:484:23)\u001b[22m\n\u001b[2m    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/taskView.spec.js:102:3\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:38:22.724Z",
+                  "startTime": "2025-11-12T22:16:12.494Z",
                   "annotations": [],
                   "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-taskView-Delete-Task-from-actions-menu-desktop-chromium/test-failed-1.png"
+                    },
                     {
                       "name": "video",
                       "contentType": "video/webm",
                       "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-taskView-Delete-Task-from-actions-menu-desktop-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-taskView-Delete-Task-from-actions-menu-desktop-chromium/error-context.md"
                     }
-                  ]
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js",
+                    "column": 23,
+                    "line": 484
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "0824b3cd4bafa8f0d5cc-51cd8f6472103941c6b9",
           "file": "regression/taskView.spec.js",
-          "line": 97,
+          "line": 98,
           "column": 1
         },
         {
@@ -540,17 +1097,17 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 5,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5305,
+                  "duration": 4459,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -558,22 +1115,22 @@
                   "steps": [
                     {
                       "title": "Expect \"poll not toBe\"",
-                      "duration": 901
+                      "duration": 420
                     },
                     {
                       "title": "Expect \"poll not toBe\"",
-                      "duration": 374
+                      "duration": 382
                     },
                     {
                       "title": "Expect \"poll not toBe\"",
-                      "duration": 126
+                      "duration": 379
                     },
                     {
                       "title": "Expect \"poll not toBe\"",
-                      "duration": 378
+                      "duration": 386
                     }
                   ],
-                  "startTime": "2025-11-06T18:38:33.598Z",
+                  "startTime": "2025-11-12T22:16:29.605Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -589,7 +1146,7 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-5d4af254b894363e0147",
           "file": "regression/taskView.spec.js",
-          "line": 105,
+          "line": 106,
           "column": 1
         },
         {
@@ -598,22 +1155,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 500000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
               "projectName": "desktop-chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 5,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3417,
+                  "duration": 3251,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-06T18:38:38.904Z",
+                  "startTime": "2025-11-12T22:16:34.178Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -629,7 +1186,346 @@
           ],
           "id": "0824b3cd4bafa8f0d5cc-f4bc6306f3c49d19ee99",
           "file": "regression/taskView.spec.js",
-          "line": 115,
+          "line": 116,
+          "column": 1
+        },
+        {
+          "title": "Tasks Filter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 500000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 52028,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 375
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 111
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 110
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 109
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 368
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 372
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 381
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 371
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 372
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 374
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 373
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 372
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 372
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 372
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 374
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 367
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 371
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 369
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 9042,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at TaskPage.waitForTableSwap (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:515:5)\n    at TaskPage.applyFilter (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:751:9)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/taskView.spec.js:183:3",
+                        "location": {
+                          "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js",
+                          "column": 5,
+                          "line": 515
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mpages/TaskPage.js:515\n\n\u001b[0m \u001b[90m 513 |\u001b[39m\n \u001b[90m 514 |\u001b[39m   \u001b[36masync\u001b[39m waitForTableSwap(prevFingerprint\u001b[33m,\u001b[39m { timeout \u001b[33m=\u001b[39m \u001b[35m10\u001b[39m_000 } \u001b[33m=\u001b[39m {}) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 515 |\u001b[39m     \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 516 |\u001b[39m       \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgetTableFingerprint()\u001b[33m,\u001b[39m { timeout })\n \u001b[90m 517 |\u001b[39m       \u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(prevFingerprint)\u001b[33m;\u001b[39m\n \u001b[90m 518 |\u001b[39m   }\u001b[0m"
+                      }
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 9048,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at TaskPage.waitForTableSwap (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:515:5)\n    at TaskPage.unapplyFilter (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:779:9)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/taskView.spec.js:185:3",
+                        "location": {
+                          "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js",
+                          "column": 5,
+                          "line": 515
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mpages/TaskPage.js:515\n\n\u001b[0m \u001b[90m 513 |\u001b[39m\n \u001b[90m 514 |\u001b[39m   \u001b[36masync\u001b[39m waitForTableSwap(prevFingerprint\u001b[33m,\u001b[39m { timeout \u001b[33m=\u001b[39m \u001b[35m10\u001b[39m_000 } \u001b[33m=\u001b[39m {}) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 515 |\u001b[39m     \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 516 |\u001b[39m       \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgetTableFingerprint()\u001b[33m,\u001b[39m { timeout })\n \u001b[90m 517 |\u001b[39m       \u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(prevFingerprint)\u001b[33m;\u001b[39m\n \u001b[90m 518 |\u001b[39m   }\u001b[0m"
+                      }
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 377
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 397
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 370
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 369
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 9024,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at TaskPage.waitForTableSwap (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:515:5)\n    at TaskPage.applyFilter (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:751:9)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/taskView.spec.js:198:3",
+                        "location": {
+                          "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js",
+                          "column": 5,
+                          "line": 515
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mpages/TaskPage.js:515\n\n\u001b[0m \u001b[90m 513 |\u001b[39m\n \u001b[90m 514 |\u001b[39m   \u001b[36masync\u001b[39m waitForTableSwap(prevFingerprint\u001b[33m,\u001b[39m { timeout \u001b[33m=\u001b[39m \u001b[35m10\u001b[39m_000 } \u001b[33m=\u001b[39m {}) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 515 |\u001b[39m     \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 516 |\u001b[39m       \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgetTableFingerprint()\u001b[33m,\u001b[39m { timeout })\n \u001b[90m 517 |\u001b[39m       \u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(prevFingerprint)\u001b[33m;\u001b[39m\n \u001b[90m 518 |\u001b[39m   }\u001b[0m"
+                      }
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 9024,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"task-row-176|task-row-179|task-row-172#20\"\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at TaskPage.waitForTableSwap (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:515:5)\n    at TaskPage.unapplyFilter (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js:779:9)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/taskView.spec.js:200:3",
+                        "location": {
+                          "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/TaskPage.js",
+                          "column": 5,
+                          "line": 515
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mpages/TaskPage.js:515\n\n\u001b[0m \u001b[90m 513 |\u001b[39m\n \u001b[90m 514 |\u001b[39m   \u001b[36masync\u001b[39m waitForTableSwap(prevFingerprint\u001b[33m,\u001b[39m { timeout \u001b[33m=\u001b[39m \u001b[35m10\u001b[39m_000 } \u001b[33m=\u001b[39m {}) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 515 |\u001b[39m     \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 516 |\u001b[39m       \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgetTableFingerprint()\u001b[33m,\u001b[39m { timeout })\n \u001b[90m 517 |\u001b[39m       \u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(prevFingerprint)\u001b[33m;\u001b[39m\n \u001b[90m 518 |\u001b[39m   }\u001b[0m"
+                      }
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 367
+                    },
+                    {
+                      "title": "Expect \"poll not toBe\"",
+                      "duration": 370
+                    }
+                  ],
+                  "startTime": "2025-11-12T22:16:37.430Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-taskView-Tasks-Filter-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0824b3cd4bafa8f0d5cc-65e05f57039195aeefc4",
+          "file": "regression/taskView.spec.js",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "Clear All Filters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 500000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3702,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:17:29.459Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-taskView-Clear-All-Filters-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0824b3cd4bafa8f0d5cc-c29e99ce494202dc714d",
+          "file": "regression/taskView.spec.js",
+          "line": 210,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "smoke/healthcheck.spec.js",
+      "file": "smoke/healthcheck.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Healthcheck",
+          "file": "smoke/healthcheck.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "App renders and shows main container",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1135,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-12T22:15:02.918Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/smoke-healthcheck-Healthch-9a128-rs-and-shows-main-container-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "48dc95e94eaf3fc852ee-54c04ca881603f7ddabb",
+              "file": "smoke/healthcheck.spec.js",
+              "line": 6,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "smoke/login.spec.js",
+      "file": "smoke/login.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "valid login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2106,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-12T22:15:04.060Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/smoke-login-valid-login-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7acac509b917cc00c2f5-e06d5c3e05a3be2b77da",
+          "file": "smoke/login.spec.js",
+          "line": 6,
           "column": 1
         }
       ]
@@ -637,11 +1533,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-11-06T18:36:56.376Z",
-    "duration": 106026.37700000001,
-    "expected": 13,
+    "startTime": "2025-11-12T22:14:58.443Z",
+    "duration": 154739.291,
+    "expected": 27,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

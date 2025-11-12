@@ -9,6 +9,7 @@ export class TaskPage extends BasePage {
     this.createTaskButton = this.getByTestId('create-task-button');
     this.taskTable = this.getByTestId('tasks-table');
     this.searchInput = this.getByTestId('search-tasks');
+    this.filterButton = this.getByTestId('filter-tasks-button');
     this.actionsButton = this.getByTestId('tasks-table').locator('tbody [data-controller="task-actions"] [data-task-actions-target="button"]');
     this.taskContainer = this.page.locator('.tasks-container');
     this.rowsTable = this.getByTestId('tasks-table').locator('tbody tr[id^="task-row-"]');
@@ -21,6 +22,8 @@ export class TaskPage extends BasePage {
 
     this.sortHeader = (column) =>
     this.taskTable.locator(`thead th[data-table-sort-target="header"][data-column="${column}"]`);
+
+    this.clearAllBtn = this.page.getByText('Clear All Filters', { exact: true });
 
   }
 
@@ -325,7 +328,6 @@ export class TaskPage extends BasePage {
     const shortMonth = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m - 1];
     await expect(dueCell).toContainText(new RegExp(`${+d}\\s+${shortMonth},\\s+${y}`, 'i'));
   }
-
 
   #priorityLabelToValue(label) {
     const m = String(label).trim().toLowerCase();
@@ -674,6 +676,428 @@ export class TaskPage extends BasePage {
       throw new Error(`[${column}] esperado ${direction} pero se obtuvo: ${values.join(' | ')}`);
     }
   }
+
+    // FILTERING
+
+  isFiltersOpen = async () => {
+    return await this.page.locator('button.filter-category[data-category="related_object"]').isVisible();
+  };
+
+  async openFilters() {
+    if (!(await this.isFiltersOpen())) {
+      await this.filterButton.click();
+      await expect(this.page.locator('button.filter-category[data-category="related_object"]')).toBeVisible();
+    }
+  }
+
+  async closeFilters() {
+    if (await this.isFiltersOpen()) {
+      await this.filterButton.click(); // solo cierra
+      await expect(this.page.locator('button.filter-category[data-category="related_object"]')).not.toBeVisible();
+    }
+  }
+
+  categoryBtn = (key) =>
+    this.page.locator(`button.filter-category[data-category="${key}"]`);
+
+  optionsBox = (key) =>
+    this.page.locator(`.filter-options[data-category="${key}"]`);
+
+  optionCheckbox = (key, value) =>
+    this.optionsBox(key).locator(
+      `input[type="checkbox"][data-filter-type="${key}"][data-filter-value="${value}"]`
+    );
+
+
+  
+  async selectCategory(key) {
+    // key: 'related_object' | 'due_date' | 'priority' | 'status'
+    await this.categoryBtn(key).click();
+    await expect(this.optionsBox(key)).toBeVisible();
+  }
+  
+  async clearAllFilters() {
+    await this.openFilters() 
+    await this.clearAllBtn.click();
+    await this.closeFilters() 
+  }
+
+  /**
+ * Aplica un filtro marcando los valores indicados (y deja sin tocar el resto).
+ * @param { 'related_object' | 'due_date' | 'priority' | 'status' } key
+ * @param { string[] } values  // ej: ['Lead'] o ['high','low']
+ */
+
+  async applyFilter(key, values, { close = true } = {}) {
+    await this.openFilters();
+    await this.selectCategory(key);
+  
+    const prev = await this.getTableFingerprint();
+  
+    let changedSomething = false;
+    for (const value of values) {
+      const cb = this.optionCheckbox(key, value);
+      await expect(cb, `No existe checkbox ${key}:${value}`).toBeVisible();
+      if (!(await cb.isChecked())) {
+        await cb.check();
+        changedSomething = true;
+      }
+    }
+
+    // Si marcaste algo, intenta detectar cambio; si no cambia la huella,
+    // al menos espera al ciclo de red.
+    if (changedSomething) {
+      try {
+        await this.waitForTableSwap(prev, { timeout: 10_000 });
+      } catch {
+        // puede que el set realmente no cambie la huella
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(300);
+      }
+    }
+  
+    if (close) await this.closeFilters();
+  }
+  
+  async unapplyFilter(key, values, { close = true } = {}) {
+    await this.openFilters();
+    await this.selectCategory(key);
+  
+    const prev = await this.getTableFingerprint();
+  
+    let changedSomething = false;
+    for (const value of values) {
+      const cb = this.optionCheckbox(key, value);
+      if (await cb.isChecked()) {
+        await cb.uncheck();
+        changedSomething = true;
+      }
+    }
+   
+    if (changedSomething) {
+      try {
+        await this.waitForTableSwap(prev, { timeout: 10_000 });
+      } catch {
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(300);
+      }
+    }
+  
+    if (close) await this.closeFilters();
+  }
+
+  async expectAllRowsInSet(column, allowedValues) {
+    const values = await this.getColumnValues(column);
+    const set = new Set(allowedValues.map(v => this._normalizeText(v)));
+    const bad = values.filter(v => !set.has(this._normalizeText(v)));
+    if (bad.length) {
+      throw new Error(
+        `Se encontraron valores fuera del filtro en columna "${column}": ${bad.join(' | ')}`
+      );
+    }
+  }
+
+  async expectFilteredByPriority(allowed) {
+    // priority → columna 'priority'
+    await this.expectAllRowsInSet('priority', allowed);
+  }
+
+  async expectFilteredByStatus(allowed) {
+    // status → columna 'status'
+    // Nota: tu celda trae un <span> con Overdue/… pero innerText ya lo captura
+    await this.expectAllRowsInSet('status', allowed);
+  }
+
+  async expectDueDateChangedFrom(prevFingerprint) {
+    await this.waitForTableSwap(prevFingerprint);
+  }
+
+  async waitForPossibleFilterEffect() {
+    // Útil cuando no hay una señal clara de cambio; sólo sincroniza
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  _typeFromHref(href) {
+    try {
+      const a = document.createElement('a');
+      a.href = href;
+      const parts = a.pathname.split('/').filter(Boolean); // ['leads','123']
+      const seg = (parts[0] || '').toLowerCase();
+      switch (seg) {
+        case 'leads':         return 'Lead';
+        case 'contacts':      return 'Contact';
+        case 'accounts':      return 'Account';
+        case 'opportunities': return 'Opportunity';
+        case 'funded_deals':
+        case 'deals':
+        case 'campaigns':     return 'Funded Deal'; // por si tu backend usa otro recurso
+        default:              return 'Unknown';
+      }
+    } catch {
+      return 'Unknown';
+    }
+  }
+
+  _labelFromFilterValue(v) {
+    const t = this._normalizeText(v);
+    switch (t) {
+      case 'lead':          return 'Lead';
+      case 'contact':       return 'Contact';
+      case 'account':       return 'Account';
+      case 'opportunity':   return 'Opportunity';
+      case 'campaign':      return 'Funded Deal'; // ¡clave!
+      default:              return v;
+    }
+  }
+
+  async getRelatedObjectTypesPerRow() {
+    const cells = this.rowsTable.locator('td[data-column="asset"]');
+    const n = await cells.count();
+    const types = [];
+
+    for (let i = 0; i < n; i++) {
+      const cell = cells.nth(i);
+      // ¿hay un link?
+      const link = cell.locator('a[href]').first();
+      if (await link.count()) {
+        const href = await link.getAttribute('href');
+        // Ejecuta en el browser para usar URL parsing sin importar base
+        const type = await this.page.evaluate((h) => {
+          const a = document.createElement('a');
+          a.href = h;
+          const seg = a.pathname.split('/').filter(Boolean)[0]?.toLowerCase() || '';
+          switch (seg) {
+            case 'leads':         return 'Lead';
+            case 'contacts':      return 'Contact';
+            case 'accounts':      return 'Account';
+            case 'opportunities': return 'Opportunity';
+            case 'funded_deals':
+            case 'deals':
+            case 'campaigns':     return 'Funded Deal';
+            default:              return 'Unknown';
+          }
+        }, href);
+        types.push(type);
+        continue;
+      }
+
+      // Sin link: mira el texto
+      const txt = (await cell.innerText()).trim();
+      if (this._normalizeText(txt) === 'none') {
+        types.push('None');
+      } else {
+        // Hay nombre/empresa pero sin tipo visible → lo marcamos como Unknown
+        types.push('Unknown');
+      }
+    }
+
+    return types;
+  }
+
+  async expectFilteredByRelatedObject(allowedFilterValues) {
+    // Normaliza a labels visibles (maneja 'Campaign' → 'Funded Deal')
+    const allowedLabels = allowedFilterValues.map(v => this._labelFromFilterValue(v));
+    const set = new Set(allowedLabels.map(v => this._normalizeText(v)));
+
+    const types = await this.getRelatedObjectTypesPerRow();
+    const bad = types.filter(t => !set.has(this._normalizeText(t)));
+
+    if (bad.length) {
+      throw new Error(
+        `Filtrado Related Object inválido. Permitidos: [${allowedLabels.join(', ')}]; ` +
+        `encontrados fuera de set: ${bad.join(' | ')}`
+      );
+    }
+  }
+
+
+_dueCells() {
+  // celdas visibles de la columna due_at
+  return this.rowsTable.locator('td[data-column="due_at"]');
+}
+
+async _browserTodayISO() {
+  // Fecha de HOY en el timezone del navegador (YYYY-MM-DD)
+  return await this.page.evaluate(() => {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  });
+}
+
+_parseDdMonYyyyToISO(txt) {
+  // Fallback por si faltara el atributo y sólo tuviéramos "04 Sep, 2025"
+  const m = /^\s*(\d{1,2})\s+([A-Za-z]{3})\,?\s+(\d{4})\s*$/.exec(String(txt));
+  if (!m) return null;
+  const [ , dStr, monStr, yStr ] = m;
+  const map = { jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12 };
+  const mm = map[monStr.toLowerCase()];
+  if (!mm) return null;
+  const d = String(+dStr).padStart(2, '0');
+  const m2 = String(mm).padStart(2, '0');
+  return `${yStr}-${m2}-${d}`;
+}
+
+async _getDueValues() {
+  // Devuelve { iso: 'YYYY-MM-DD' | null, text: '...' } por cada fila visible
+  const cells = this._dueCells();
+  const n = await cells.count();
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const cell = cells.nth(i);
+    const span = cell.locator('[data-inline-edit-field-name-value="due_at"]').first();
+    const text = (await span.innerText()).trim();
+    const attr = await span.getAttribute('data-inline-edit-current-value-value');
+    let iso = (attr && attr.trim()) ? attr.trim() : null;
+
+    // Fallback si no hay atributo
+    if (!iso) {
+      if (/no due date/i.test(text)) {
+        iso = null;
+      } else {
+        iso = this._parseDdMonYyyyToISO(text);
+      }
+    }
+    out.push({ iso: iso || null, text });
+  }
+  return out;
+}
+
+async expectFilteredByDueDate(selection) {
+  const sel = String(selection).trim().toLowerCase();
+  const todayISO = await this._browserTodayISO();
+  const values = await this._getDueValues();
+
+  if (values.length === 0) {
+    console.warn(`[DueDate] El filtro "${selection}" devolvió 0 filas visibles. `);
+    return;
+  }
+
+  const bad = []; // recolecta textos que no cumplen
+  for (const v of values) {
+    const iso = v.iso; // null o 'YYYY-MM-DD'
+    switch (sel) {
+      case 'today': {
+        // Debe existir fecha y ser exactamente hoy
+        if (!iso || iso !== todayISO) bad.push(v.text || '—');
+        break;
+      }
+      case 'upcoming': {
+        // Debe existir fecha y ser > hoy
+        if (!iso || iso <= todayISO) bad.push(v.text || '—');
+        break;
+      }
+      case 'overdue': {
+        // Debe existir fecha y ser < hoy
+        if (!iso || iso >= todayISO) bad.push(v.text || '—');
+        break;
+      }
+      case 'none':
+      case 'no due date': {
+        // Debe NO tener fecha (iso == null) o texto "No Due Date"
+        if (iso !== null && !/no due date/i.test(v.text)) bad.push(v.text || '—');
+        break;
+      }
+      default:
+        throw new Error(`Valor de filtro Due Date no soportado: "${selection}"`);
+    }
+  }
+
+  if (bad.length) {
+    throw new Error(
+      `Filtrado de Due Date inválido para "${selection}". ` +
+      `Los siguientes valores NO cumplen: ${bad.join(' | ')}`
+    );
+  }
+}
+
+// --- Helpers de checkboxes ---
+_allFilterCheckboxes() {
+  return this.page.locator('input[type="checkbox"][data-tasks-filter-target="checkbox"]');
+}
+
+_checkedFilterCheckboxes() {
+  return this.page.locator(
+    'input[type="checkbox"][data-tasks-filter-target="checkbox"]:checked'
+  );
+}
+
+/**
+ * Marca múltiples filtros por categoría.
+ * Ejemplo de `selections`:
+ *  { related_object: ['Lead','Account'], due_date:['today'], priority:['high'], status:['open'] }
+ */
+async applyMultipleFilters(selections, { close = false, settleMs = 400 } = {}) {
+  await this.openFilters();
+
+  for (const [key, values] of Object.entries(selections)) {
+    await this.selectCategory(key);
+    for (const value of values) {
+      const cb = this.optionCheckbox(key, value);
+      await expect(cb, `No existe checkbox ${key}:${value}`).toBeVisible();
+      if (!(await cb.isChecked())) {
+        await cb.check();
+      }
+    }
+  }
+
+  // Pequeña sincronización de red/DOM
+  await this.page.waitForLoadState('networkidle');
+  await this.page.waitForTimeout(settleMs);
+
+  if (close) await this.closeFilters();
+}
+
+/**
+ * Click en "Clear All Filters" y verificación de que no quede NINGÚN checkbox activo.
+ * Si `expectTableChange` es true, intenta además verificar cambio de contenido en la tabla.
+ */
+async clearAllFiltersAndVerify(
+  { expectTableChange = false, settleMs = 500 } = {}
+) {
+  await this.openFilters();
+
+  // (Opcional) fingerprint antes de limpiar
+  let prevFp = null;
+  if (expectTableChange) {
+    try { prevFp = await this.getTableFingerprint(); } catch {}
+  }
+
+  // Click en el botón del footer
+  await expect(this.clearAllBtn).toBeVisible();
+  await this.clearAllBtn.click();
+
+  // Espera de red y pequeño settle
+  await this.page.waitForLoadState('networkidle');
+  await this.page.waitForTimeout(settleMs);
+
+  // Asegura que no haya NINGÚN checkbox seleccionado
+  await expect(this._checkedFilterCheckboxes()).toHaveCount(0);
+
+  // (Opcional) intenta validar cambio de tabla si se pidió
+  if (expectTableChange && prevFp) {
+    try {
+      await this.waitForTableSwap(prevFp, { timeout: 5_000 });
+    } catch {
+      // Si no cambió la huella, no lo tratamos como error; algunas combinaciones
+      // pueden producir el mismo set de resultados. Sólo dejamos un log.
+      console.warn('[ClearAll] La huella de tabla no cambió tras limpiar filtros (puede ser normal).');
+    }
+  }
+
+  // (Opcional) deja el dropdown abierto para inspección o ciérralo:
+  // await this.closeFilters();
+}
+
+/**
+ * Útil si quieres re-comprobar en otro momento que verdaderamente no haya filtros activos
+ */
+async expectNoFiltersActive() {
+  await this.openFilters();
+  await expect(this._checkedFilterCheckboxes()).toHaveCount(0);
+}
 
 
 }

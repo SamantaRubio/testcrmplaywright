@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { TaskPage } from '../pages/TaskPage.js';
+test.setTimeout(500_000);
 import taskData from '../fixtures/task-data.json' assert { type: 'json' };
 
   const unique = Date.now().toString().slice(-6);
@@ -133,4 +134,91 @@ test('Tasks Sort', async ({ page }) => {
 
   await tasks.sortBy('priority', 'desc'); 
   await tasks.expectSorted('priority', 'desc');
+});
+
+test('Tasks Filter', async ({ page }) => {
+  const tasks = new TaskPage(page);
+  await tasks.open();
+
+ // RELATED OBJECT: 
+  await tasks.applyFilter('related_object', ['Lead', 'Account']);
+  await tasks.expectFilteredByRelatedObject(['Lead', 'Account']);
+  await tasks.unapplyFilter('related_object', ['Lead', 'Account']);
+  
+  await tasks.applyFilter('related_object', ['Contact', 'Opportunity']);
+  await tasks.expectFilteredByRelatedObject(['Contact', 'Opportunity']);
+  await tasks.unapplyFilter('related_object', ['Contact', 'Opportunity']);
+  //add funded deal in the future
+  
+  // PRIORITY: 
+  await tasks.applyFilter('priority', ['high']); 
+  await tasks.expectFilteredByPriority(['High']); 
+  await tasks.unapplyFilter('priority', ['high']); 
+
+  await tasks.applyFilter('priority', ['medium']); 
+  await tasks.expectFilteredByPriority(['Medium']); 
+  await tasks.unapplyFilter('priority', ['medium']); 
+
+  await tasks.applyFilter('priority', ['low']); 
+  await tasks.expectFilteredByPriority(['Low']); 
+  await tasks.unapplyFilter('priority', ['low']); 
+  
+  // STATUS:
+  await tasks.applyFilter('status', ['open']);
+  await tasks.expectFilteredByStatus(['Open']);
+  await tasks.unapplyFilter('status', ['open']); 
+
+  await tasks.applyFilter('status', ['in_progress']);
+  await tasks.expectFilteredByStatus(['In Progress']);
+  await tasks.unapplyFilter('status', ['in_progress']); 
+
+  await tasks.applyFilter('status', ['due_today']);
+  await tasks.expectFilteredByStatus(['Due Today']);
+  await tasks.unapplyFilter('status', ['due_today']); 
+
+  await tasks.applyFilter('status', ['completed']);
+  await tasks.expectFilteredByStatus(['Completed']);
+  await tasks.unapplyFilter('status', ['completed']); 
+
+  await tasks.applyFilter('status', ['overdue']);
+  await tasks.expectFilteredByStatus(['Overdue']);
+  await tasks.unapplyFilter('status', ['overdue']); 
+
+
+  
+  // DUE DATE
+  await tasks.applyFilter('due_date', ['today']);
+  await tasks.expectFilteredByDueDate('today');
+  await tasks.unapplyFilter('due_date', ['today']);
+
+  await tasks.applyFilter('due_date', ['upcoming']);
+  await tasks.expectFilteredByDueDate('upcoming');
+  await tasks.unapplyFilter('due_date', ['upcoming']);
+
+  await tasks.applyFilter('due_date', ['overdue']);
+  await tasks.expectFilteredByDueDate('overdue');
+  await tasks.unapplyFilter('due_date', ['overdue']);
+
+  await tasks.applyFilter('due_date', ['none']);
+  await tasks.expectFilteredByDueDate('none');
+  await tasks.unapplyFilter('due_date', ['none']);
+  
+  // Limpiar todo
+  // await tasks.clearAllFilters();
+});
+
+test('Clear All Filters', async ({ page }) => {
+  const tasks = new TaskPage(page);
+  await tasks.open();
+
+  await tasks.applyMultipleFilters({
+    related_object: ['Lead'],
+    due_date: ['today'],
+    priority: ['high'],
+    status: ['open']
+  });
+
+  await tasks.clearAllFiltersAndVerify({ expectTableChange: false });
+
+  await tasks.expectNoFiltersActive();
 });
