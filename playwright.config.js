@@ -34,8 +34,8 @@ export default defineConfig({
   use: {
     baseURL: BASE_URL,
     trace: "on-first-retry",
-    //video: "retain-on-failure",
-    video: "on",
+    video: "retain-on-failure",
+    // video: "on",
     screenshot: "only-on-failure",
     // Anonymous storage by default (we already include it in /storage)
     storageState: "storage/anon.json",

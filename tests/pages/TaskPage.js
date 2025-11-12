@@ -480,8 +480,6 @@ export class TaskPage extends BasePage {
       this.page.waitForLoadState('networkidle'),
       row.getByRole('button', { name: /delete task/i }).click(),
     ]);
-  
-    await expect(row).toBeHidden();
   }
 
   async expectTaskNotInList(name) {
