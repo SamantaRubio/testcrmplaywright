@@ -54,7 +54,7 @@ test('Click Related Object', async ({ page }) => {
   await expect(page.locator('h1')).toContainText(taskData.edit.relatedQuery);
 });
 
-test('Edit inline Priority on row', async ({ page }) => {
+test('Edit inline Priority', async ({ page }) => {
   const taskPage = new TaskPage(page);
   await taskPage.open();
   await taskPage.expectTaskInList(updatedName);
@@ -62,7 +62,7 @@ test('Edit inline Priority on row', async ({ page }) => {
   await taskPage.expectPriorityInlineByTaskName(updatedName, 'Medium');
 });
 
-test('Edit due date via calendar', async ({ page }) => {
+test('Edit inline due date', async ({ page }) => {
   const taskPage = new TaskPage(page);
   await taskPage.open();
   await taskPage.searchByName(updatedName);
@@ -87,7 +87,7 @@ test('Reopen Task', async ({ page }) => {
   await taskPage.expectStatusByTaskName(updatedName, 'Open');
 });
 
-test('Edit date to Overdue date', async ({ page }) => {
+test('Change date to Overdue date', async ({ page }) => {
   const taskPage = new TaskPage(page);
   await taskPage.open();
   await taskPage.searchByName(updatedName);
@@ -95,7 +95,7 @@ test('Edit date to Overdue date', async ({ page }) => {
   await taskPage.expectStatusByTaskName(updatedName, 'Overdue');
 });
 
-test('Delete Task from actions menu', async ({ page }) => {
+test('Delete Task', async ({ page }) => {
   const taskPage = new TaskPage(page);
   await taskPage.open();
   await taskPage.searchByName(updatedName);
@@ -103,7 +103,7 @@ test('Delete Task from actions menu', async ({ page }) => {
   await taskPage.expectTaskNotInList(updatedName);
 });
 
-test('Tasks pagination', async ({ page }) => {
+test('Validate Tasks Pagination', async ({ page }) => {
   const tasks = new TaskPage(page);
   await tasks.open();
   await tasks.expectPreviousDisabledOnFirstPage();
@@ -113,7 +113,7 @@ test('Tasks pagination', async ({ page }) => {
   await tasks.gotoPage(1);
 });
 
-test('Tasks Sort', async ({ page }) => {
+test('Validate Tasks Sort', async ({ page }) => {
   const tasks = new TaskPage(page);
   await tasks.open();
 
@@ -136,7 +136,7 @@ test('Tasks Sort', async ({ page }) => {
   await tasks.expectSorted('priority', 'desc');
 });
 
-test('Tasks Filter', async ({ page }) => {
+test('Validate Tasks Filter', async ({ page }) => {
   const tasks = new TaskPage(page);
   await tasks.open();
 

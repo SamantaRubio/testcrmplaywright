@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/LoginPage.js';
 
 test.use({ storageState: 'storage/anon.json' });
 
-test('valid login', async ({ page }) => {
+test('Validate Login', async ({ page }) => {
   const login = new LoginPage(page);
   await login.open();
   await login.login(process.env.ADMIN_USERNAME, process.env.ADMIN_PSW);

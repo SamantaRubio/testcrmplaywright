@@ -1,0 +1,44 @@
+{
+    "lead1": {
+      "lastName": "Playwright",
+      "title": "quality assurance",
+      "referredBy": "Sam Playwright",
+      "background": "background Playwright",
+      "tags": ["Playwright", "qa"],
+      "industry": "Technology",
+      "state": "Alaska",
+      "city": "Akron",
+      "businessDescription": "Business Description Playwright",
+      "status": "contacted",
+      "rating": "3",
+      "campaign": "Bahringer, Casper and Nolan Campaign 73",
+      "source": "Google Marketing",
+      "access": "Public",
+      "lastEmailDate": "2024-12-21",
+      "lastTextDate": "2024-12-22",
+      "blog": "https://www.google.com/",
+      "linkedin": "https://www.linkedin.com/linkedin-user",
+      "facebook":"https://web.facebook.com/facebook-user",
+      "twitter":"https://x.com/twitter-user"
+    },
+    "lead2": {
+      "lastName": "Playwright - Updated",
+      "title": "quality assurance updated",
+      "referredBy": "Sam Playwright updated",
+      "background": "background Playwright updated",
+      "tags": ["sam_prueba", "tag1"],
+      "assignedTo": "Mariana Ochoa",
+      "lastEmailDate": "2025-10-21",
+      "lastTextDate": "2025-09-22",
+      "blog": "https://www.google.com/updated",
+      "linkedin": "https://www.linkedin.com/linkedinupdated",
+      "facebook":"https://web.facebook.com/facebookupdated",
+      "twitter":"https://x.com/twitterupdated",
+      "addComment": "Playwright was here"
+    },
+    "convertLead":{
+      "assignedTo": "Victor",
+      "opportunityStage": "awaiting_docs",
+      "permissionsAccess": "Lead"
+    }
+}

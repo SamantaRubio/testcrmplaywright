@@ -102,14 +102,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2254,
+                  "duration": 2356,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-12T22:36:28.218Z",
+                  "startTime": "2025-12-01T15:26:20.355Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/setup-auth.setup.js-save-authenticated-storage-setup/video.webm"
+                    }
+                  ]
                 }
               ],
               "status": "expected"
@@ -123,18 +129,18 @@
       ]
     },
     {
-      "title": "regression/taskView.spec.js",
-      "file": "regression/taskView.spec.js",
+      "title": "regression/Leads/leadsView.spec.js",
+      "file": "regression/Leads/leadsView.spec.js",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Create Task",
+          "title": "Create Lead",
           "ok": true,
           "tags": [],
           "tests": [
             {
-              "timeout": 500000,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
@@ -144,31 +150,37 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5753,
+                  "duration": 7262,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-12T22:36:30.906Z",
+                  "startTime": "2025-12-01T15:26:23.398Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Create-Lead-desktop-chromium/video.webm"
+                    }
+                  ]
                 }
               ],
               "status": "expected"
             }
           ],
-          "id": "0824b3cd4bafa8f0d5cc-c845b9292aa18550015d",
-          "file": "regression/taskView.spec.js",
-          "line": 10,
+          "id": "b364cf244f569bba94f9-0b55175d764757583bab",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 14,
           "column": 1
         },
         {
-          "title": "Edit Task",
+          "title": "Reject Lead",
           "ok": true,
           "tags": [],
           "tests": [
             {
-              "timeout": 500000,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
@@ -178,31 +190,37 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11349,
+                  "duration": 6998,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-12T22:36:36.769Z",
+                  "startTime": "2025-12-01T15:26:30.777Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Reject-Lead-desktop-chromium/video.webm"
+                    }
+                  ]
                 }
               ],
               "status": "expected"
             }
           ],
-          "id": "0824b3cd4bafa8f0d5cc-cd0300c216ba8a1d059a",
-          "file": "regression/taskView.spec.js",
-          "line": 29,
+          "id": "b364cf244f569bba94f9-cf7d5435446873c5e175",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 32,
           "column": 1
         },
         {
-          "title": "Delete Task from actions menu",
+          "title": "Reopen Lead",
           "ok": true,
           "tags": [],
           "tests": [
             {
-              "timeout": 500000,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "desktop-chromium",
@@ -212,22 +230,588 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9848,
+                  "duration": 7090,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-11-12T22:36:48.119Z",
+                  "startTime": "2025-12-01T15:26:37.778Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Reopen-Lead-desktop-chromium/video.webm"
+                    }
+                  ]
                 }
               ],
               "status": "expected"
             }
           ],
-          "id": "0824b3cd4bafa8f0d5cc-51cd8f6472103941c6b9",
-          "file": "regression/taskView.spec.js",
-          "line": 98,
+          "id": "b364cf244f569bba94f9-59a1a0b66a0b92b419a1",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "Reject Lead From Lead Details View",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:26:44.870Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-9a764-Lead-From-Lead-Details-View-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-e05766ea4ebc40ec43f3",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "Reopen Lead From Lead Details View",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7373,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:26:53.552Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-6c253-Lead-From-Lead-Details-View-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-09dbcdbdfeaf80013c17",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "Edit Lead",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24701,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:00.928Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Edit-Lead-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-989f11cc5e0953a2e29d",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "Verify Convert Lead link Lead Details View",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2332,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:25.630Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-bd8e3-Lead-link-Lead-Details-View-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-efcb355d07e1734e9d06",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "Convert Lead from Leads View",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10392,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:27.965Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Convert-Lead-from-Leads-View-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-d71dfd4db77a14acc9d9",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "Sort Leads by Lead Name",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2342,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:38.359Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Sort-Leads-by-Lead-Name-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-5b313b331670852debb9",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "Sort Leads by Mobile Phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2308,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:40.706Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Sort-Leads-by-Mobile-Phone-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-4029ec539a9fe7c378c2",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 118,
+          "column": 1
+        },
+        {
+          "title": "Sort Leads by Email Address",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2062,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:43.016Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Sort-Leads-by-Email-Address-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-6b8e6dc6ff81b119b208",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "Filter Leads by New Status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3492,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:45.079Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Filter-Leads-by-New-Status-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-275ac2cd94b721cc42f1",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "Filter Leads by Contacted Status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3131,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:48.572Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Filter-Leads-by-Contacted-Status-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-9dd2ce9fb80eb56123fd",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 136,
+          "column": 1
+        },
+        {
+          "title": "Filter Leads by Converted Status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3249,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:51.705Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Filter-Leads-by-Converted-Status-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-665092f47aa373e40988",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 142,
+          "column": 1
+        },
+        {
+          "title": "Filter Leads by Rejected Status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:54.955Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Filter-Leads-by-Rejected-Status-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-7fd78496d878a09089c6",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 148,
+          "column": 1
+        },
+        {
+          "title": "Filter Leads by Assigned to Me Status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3248,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:27:58.421Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-aa022-ds-by-Assigned-to-Me-Status-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-291bca1e566940fb0a5f",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 154,
+          "column": 1
+        },
+        {
+          "title": "Filter Leads by Unassigned Status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2598,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-01T15:28:01.671Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-leadsView-Filter-Leads-by-Unassigned-Status-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b364cf244f569bba94f9-dbf0627b10f52b0cb34b",
+          "file": "regression/Leads/leadsView.spec.js",
+          "line": 160,
           "column": 1
         }
       ]
@@ -235,9 +819,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-11-12T22:36:27.817Z",
-    "duration": 30170.623,
-    "expected": 4,
+    "startTime": "2025-12-01T15:26:19.950Z",
+    "duration": 104340.567,
+    "expected": 18,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
