@@ -458,26 +458,79 @@ export class LeadsPage extends BasePage {
 
     }  
 
-    async rejectLeadFromDetails(mobile, firstName) {
-      await this.leadsSearch(mobile);
-      await this.openRowByName(firstName);
+    // async rejectLeadFromDetails(mobile, firstName) {
+    //   await this.leadsSearch(mobile);
+    //   await this.openRowByName(firstName);
     
-      this.page.once('dialog', d => d.accept());
+    //   this.page.once('dialog', d => d.accept());
     
-      const [response] = await Promise.all([
-        this.page.waitForResponse(res =>
-          res.url().includes('/reject') && res.request().method() === 'PUT'
-        ),
-        this.rejectButtonDetails.click(),
-      ]);
+    //   const [response] = await Promise.all([
+    //     this.page.waitForResponse(res =>
+    //       res.url().includes('/reject') && res.request().method() === 'PUT'
+    //     ),
+    //     this.rejectButtonDetails.click(),
+    //   ]);
     
-      expect(response.status()).toBe(200);
+    //   expect(response.status()).toBe(200);
     
-      await this.page.waitForLoadState('networkidle');
-      await this.leadsSearch(mobile);
+    //   await this.page.waitForLoadState('networkidle');
+    //   await this.leadsSearch(mobile);
     
-      await expect(this.reopenLeadButton).toBeVisible();
+    //   await expect(this.reopenLeadButton).toBeVisible();
+    // }
+
+    async rejectLeadFromDetails(mobile, firstName, maxRetries = 2) {
+      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+          // 1. Buscar y abrir el lead
+          await this.leadsSearch(mobile);
+          await this.openRowByName(firstName);
+    
+          // 2. Preparar el handler del diálogo
+          this.page.once('dialog', async (dialog) => {
+            try {
+              await dialog.accept();
+            } catch (err) {
+              console.warn(`Error al aceptar el diálogo (intento ${attempt}):`, err);
+              // aquí podrías decidir lanzar el error si quieres que truene directo:
+              // throw err;
+            }
+          });
+    
+          // 3. Click + esperar la respuesta de /reject
+          const [response] = await Promise.all([
+            this.page.waitForResponse(res =>
+              res.url().includes('/reject') && res.request().method() === 'PUT'
+            ),
+            this.rejectButtonDetails.click(),
+          ]);
+    
+          // 4. Validar el status
+          expect(response.status()).toBe(200);
+    
+          // 5. Esperar que la página termine de cargar y volver a buscar el lead
+          await this.page.waitForLoadState('networkidle');
+          await this.leadsSearch(mobile);
+    
+          // 6. Verificar que ahora exista el botón de "reopen"
+          await expect(this.reopenLeadButton).toBeVisible();
+    
+          // Si todo salió bien, salimos del método
+          return;
+        } catch (error) {
+          console.warn(`Fallo en rejectLeadFromDetails, intento ${attempt}:`, error);
+    
+          // Si ya es el último intento, re-lanzamos el error para que falle el test
+          if (attempt === maxRetries) {
+            throw error;
+          }
+    
+          // Opcional: un pequeño wait antes de reintentar
+          // await this.page.waitForTimeout(500);
+        }
+      }
     }
+    
     
     async reopenLead(mobile) {
       await this.leadsSearch(mobile);
@@ -493,22 +546,6 @@ export class LeadsPage extends BasePage {
       await expect (this.rejectLeadButton).toBeVisible();
 
     }
-  
-
-    // async reopenLeadFromDetails(mobile, firstName) {
-    //   await this.leadsSearch(mobile);
-    //   await this.openRowByName(firstName);
-
-    //   this.page.once('dialog', d => d.accept());
-    //   await Promise.all([
-    //     this.page.waitForLoadState('networkidle'),
-    //     this.reopenButtonDetails.click(),
-    //   ]);
-
-    //   await this.leadsSearch(mobile);
-    //   await expect (this.rejectLeadButton).toBeVisible();
-
-    // }
 
     async reopenLeadFromDetails(mobile, firstName) {
       await this.leadsSearch(mobile);
