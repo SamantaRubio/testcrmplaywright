@@ -458,27 +458,6 @@ export class LeadsPage extends BasePage {
 
     }  
 
-    // async rejectLeadFromDetails(mobile, firstName) {
-    //   await this.leadsSearch(mobile);
-    //   await this.openRowByName(firstName);
-    
-    //   this.page.once('dialog', d => d.accept());
-    
-    //   const [response] = await Promise.all([
-    //     this.page.waitForResponse(res =>
-    //       res.url().includes('/reject') && res.request().method() === 'PUT'
-    //     ),
-    //     this.rejectButtonDetails.click(),
-    //   ]);
-    
-    //   expect(response.status()).toBe(200);
-    
-    //   await this.page.waitForLoadState('networkidle');
-    //   await this.leadsSearch(mobile);
-    
-    //   await expect(this.reopenLeadButton).toBeVisible();
-    // }
-
     async rejectLeadFromDetails(mobile, firstName, maxRetries = 2) {
       for (let attempt = 1; attempt <= maxRetries; attempt++) {
         try {
@@ -530,7 +509,6 @@ export class LeadsPage extends BasePage {
         }
       }
     }
-    
     
     async reopenLead(mobile) {
       await this.leadsSearch(mobile);
