@@ -11,7 +11,7 @@ let email = `playwrightmanuallead${unique}@mailinator.com`;
 let altEmail = `samanta.rubio+${unique}@mailinator.com`;
 let company = `PlaywrightCompany${unique}`;
 
-test('Create Lead', async ({ page }) => {
+test('Create and Search Lead', async ({ page }) => {
     const leadsPage = new LeadsPage(page);
     await leadsPage.open();
     await leadsPage.openCreateModal();
