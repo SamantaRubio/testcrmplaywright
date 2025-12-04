@@ -163,3 +163,10 @@ test('Filter Leads by Unassigned Status', async ({ page }) => {
   await leadsPage.filterByStatusAndVerify('assignment','unassigned', 10);
 });
 
+test('Clear All Filters', async ({ page }) => {
+  const leadsPage = new LeadsPage(page);
+  await leadsPage.open();
+  await leadsPage.clearConvertedAndRejectedFilters(10);
+});
+
+

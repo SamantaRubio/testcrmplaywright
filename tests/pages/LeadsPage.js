@@ -720,6 +720,8 @@ export class LeadsPage extends BasePage {
       ).toBeTruthy();
     }
 
+    // Filters
+
     async verifySortByLeadName(limit = 10) {
       await this.verifySortForColumn(this.sortByNameHeader, 'name', limit);
     }
@@ -811,6 +813,76 @@ export class LeadsPage extends BasePage {
       await this.page.waitForLoadState('networkidle');
     }
     
+    async clearConvertedAndRejectedFilters(limit = 10) {
+
+      // --- 1) Abrir filtro ---
+      await this.filterButton.click();
+      await expect(this.filterDropdown).toBeVisible();
+    
+      const convertedCheckbox = this.page.locator(
+        'input[data-filter-type="status"][data-filter-value="converted"]'
+      );
+    
+      const rejectedCheckbox = this.page.locator(
+        'input[data-filter-type="status"][data-filter-value="rejected"]'
+      );
+    
+      // --- 2) Seleccionar ambos filtros ---
+      await convertedCheckbox.check();
+      await rejectedCheckbox.check();
+    
+      await this.page.waitForLoadState('networkidle');
+    
+      // --- 3) Cerrar dropdown ---
+      await this.filterButton.click();
+      await expect(this.filterDropdown).not.toBeVisible();
+    
+    
+      // --- 4) Validación de los primeros N rows ---
+      const totalRows = await this.leadRows.count();
+      const rowsToCheck = Math.min(totalRows, limit);
+    
+      expect(rowsToCheck).toBeGreaterThan(0);
+    
+      for (let i = 0; i < rowsToCheck; i++) {
+        const row = this.leadRows.nth(i);
+    
+        // converted → contiene el texto "converted"
+        const isConverted = await row.locator('td').filter({ hasText: /converted/i }).count();
+    
+        // rejected → tiene botón/enlace "Reopen"
+        const isRejected = await row.locator('a,button').filter({ hasText: /reopen/i }).count();
+    
+        expect(
+          isConverted > 0 || isRejected > 0,
+          `Row #${i + 1} no coincide con converted o rejected`
+        ).toBeTruthy();
+      }
+    
+    
+      // --- 5) Click en Clear All Filters ---
+      await this.filterButton.click();
+      await expect(this.filterDropdown).toBeVisible();
+    
+      await this.clearFiltersButton.click();
+      await this.page.waitForLoadState('networkidle');
+    
+    
+      // --- 6) Validar que los filtros se limpiaron correctamente ---
+    
+      // A) Checkboxes unchecked
+      await expect(convertedCheckbox).not.toBeChecked();
+      await expect(rejectedCheckbox).not.toBeChecked();
+    
+      // B) Lista de filtros activos está vacía (no importa si está hidden)
+      const activeFilters = this.page.locator('#active-filters');
+      await expect(activeFilters).toHaveText('');
+    
+      // Cerrar el dropdown (opcional)
+      await this.filterButton.click();
+    }
+    
+  
     
   
 }
