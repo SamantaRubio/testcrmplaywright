@@ -75,14 +75,14 @@ test.describe.serial('Opportunity Details - dependent tests', () => {
         await oppPage.verifyFirstDocumentSuperCashGroupDownload();
     });
 
-    // test('Preview in Modal and navigation', async ({ page }) => {
-    //     const oppPage = new OpportunityDetails(page);
-    //     await oppPage.open();
-    //     await oppPage.oppSearch(searchTerm);
-    //     await oppPage.openRowByName(searchTerm);
-    //     await oppPage.resetDocumentsWidgetState();
-    //     await oppPage.openFirstDocumentPreviewAndVerify();
-    //     await oppPage.verifyModalNavigationArrowsWork();
-    // });
+    test('Preview in Modal and navigation', async ({ page }) => {
+        const oppPage = new OpportunityDetails(page);
+        await oppPage.open();
+        await oppPage.oppSearch(searchTerm);
+        await oppPage.openRowByName(searchTerm);
+        await oppPage.resetDocumentsWidgetState();
+        await oppPage.openFirstDocumentPreviewAndVerify();
+        await oppPage.verifyModalNavigationArrowsWork();
+    });
 
 });

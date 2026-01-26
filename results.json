@@ -102,20 +102,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1632,
+                  "duration": 2033,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-01-26T15:25:33.565Z",
+                  "startTime": "2026-01-26T16:14:31.607Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/setup-auth.setup.js-save-authenticated-storage-setup/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -157,20 +151,14 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3969,
+                      "duration": 3952,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-01-26T15:25:35.772Z",
+                      "startTime": "2026-01-26T16:14:34.227Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-4f107-nt-tests-Choose-Opportunity-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -197,20 +185,14 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 6998,
+                      "duration": 6746,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-01-26T15:25:39.856Z",
+                      "startTime": "2026-01-26T16:14:38.289Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-991b8-nt-tests-Search-Opportunity-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -237,7 +219,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 8433,
+                      "duration": 14513,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
@@ -245,18 +227,26 @@
                       "steps": [
                         {
                           "title": "Expect \"poll toBe\"",
-                          "duration": 12
+                          "duration": 6014,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 7000ms exceeded while waiting on the predicate",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 7000ms exceeded while waiting on the predicate\n    at OpportunityDetails._waitUploadFormOpened (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/OpportunityDetails.js:149:7)\n    at OpportunityDetails.openUploadForm (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/OpportunityDetails.js:182:24)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/Opportunities/OpportunityDetails.spec.js:30:9",
+                            "location": {
+                              "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/OpportunityDetails.js",
+                              "column": 7,
+                              "line": 149
+                            },
+                            "snippet": "\u001b[90m   at \u001b[39mpages/OpportunityDetails.js:149\n\n\u001b[0m \u001b[90m 147 |\u001b[39m\n \u001b[90m 148 |\u001b[39m     \u001b[36masync\u001b[39m _waitUploadFormOpened({ timeout \u001b[33m=\u001b[39m \u001b[35m15000\u001b[39m } \u001b[33m=\u001b[39m {}) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 149 |\u001b[39m       \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 150 |\u001b[39m         \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 151 |\u001b[39m           \u001b[36mconst\u001b[39m attached \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39muploadForm\u001b[33m.\u001b[39mcount()\u001b[33m;\u001b[39m\n \u001b[90m 152 |\u001b[39m           \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mattached) \u001b[36mreturn\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m;\u001b[39m\u001b[0m"
+                          }
+                        },
+                        {
+                          "title": "Expect \"poll toBe\"",
+                          "duration": 17
                         }
                       ],
-                      "startTime": "2026-01-26T15:25:46.856Z",
+                      "startTime": "2026-01-26T16:14:45.036Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-da60a-ent-and-Search-in-Documents-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -283,20 +273,14 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 7765,
+                      "duration": 7593,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-01-26T15:25:55.291Z",
+                      "startTime": "2026-01-26T16:14:59.549Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-02d14-ocument-in-Documents-widget-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -323,7 +307,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 8176,
+                      "duration": 7930,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
@@ -331,22 +315,16 @@
                       "steps": [
                         {
                           "title": "Expect \"poll toBe\"",
-                          "duration": 83
+                          "duration": 87
                         },
                         {
                           "title": "Expect \"poll toBe\"",
-                          "duration": 64
+                          "duration": 70
                         }
                       ],
-                      "startTime": "2026-01-26T15:26:03.057Z",
+                      "startTime": "2026-01-26T16:15:07.144Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-e0932-lect-Deselect-all-documents-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -373,20 +351,14 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 7997,
+                      "duration": 7532,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-01-26T15:26:11.234Z",
+                      "startTime": "2026-01-26T16:15:15.075Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-5616a-Direct-Cash-Group-Watermark-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -413,20 +385,14 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 8183,
+                      "duration": 7848,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-01-26T15:26:19.234Z",
+                      "startTime": "2026-01-26T16:15:22.609Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-152a8--Super-Cash-Group-Watermark-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -436,6 +402,50 @@
               "file": "regression/Opportunities/OpportunityDetails.spec.js",
               "line": 68,
               "column": 5
+            },
+            {
+              "title": "Preview in Modal and navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 23096,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Expect \"poll not toBe\"",
+                          "duration": 2
+                        },
+                        {
+                          "title": "Expect \"poll toBe\"",
+                          "duration": 2
+                        }
+                      ],
+                      "startTime": "2026-01-26T16:15:30.458Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dc7214fa3f39fbb23078-1261cb2c32bbf8801d57",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 78,
+              "column": 5
             }
           ]
         }
@@ -444,9 +454,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-01-26T15:25:33.158Z",
-    "duration": 54282.448000000004,
-    "expected": 8,
+    "startTime": "2026-01-26T16:14:31.279Z",
+    "duration": 82302.779,
+    "expected": 9,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

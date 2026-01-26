@@ -42,36 +42,34 @@ export class OpportunityDetails extends BasePage {
         this.firstDocumentOpenBtn = this.firstDocumentCard.locator('button[data-action*="document-modal#open"]').first();
     }
 
-    isRetriableError(err) {
-      const msg = String(err?.message || err);
-      return (
-        msg.includes('Timeout') ||
-        msg.includes('not visible') ||
-        msg.includes('detached') ||
-        msg.includes('Execution context was destroyed') ||
-        msg.includes('waiting for') ||
-        msg.includes('Element is not attached') ||
-        msg.includes('strict mode violation') ||
-        msg.includes('Target page, context or browser has been closed') ||
-        msg.includes('has been closed')
-      );
-    }
-    
-    async retry(fn, { retries = 4, delayMs = 300 } = {}) {
-      let lastErr;
-      for (let i = 0; i < retries; i++) {
-        try {
-          return await fn(i);
-        } catch (err) {
-          lastErr = err;
-          if (!this.isRetriableError(err) || i === retries - 1) throw err;
-          await this.page.waitForTimeout(delayMs);
-        }
+
+  isRetriableError(err) {
+    const msg = String(err?.message || err);
+    return (
+      msg.includes('Timeout') ||
+      msg.includes('not visible') ||
+      msg.includes('detached') ||
+      msg.includes('Element is not attached') ||
+      msg.includes('Execution context was destroyed') ||
+      msg.includes('waiting for') ||
+      msg.includes('strict mode violation')
+    );
+  }
+
+  async retry(fn, { retries = 4, delayMs = 250 } = {}) {
+    let lastErr;
+    for (let i = 0; i < retries; i++) {
+      try {
+        return await fn(i);
+      } catch (err) {
+        lastErr = err;
+        if (!this.isRetriableError(err) || i === retries - 1) throw err;
+        await this.page.waitForTimeout(delayMs);
       }
-      throw lastErr;
     }
-    
-    
+    throw lastErr;
+  }
+
   
     async open() {
         await this.goto('/opportunities');
@@ -499,40 +497,35 @@ export class OpportunityDetails extends BasePage {
     // }
 
     async openFirstDocumentPreviewAndVerify() {
+      // Locators más directos (tu snapshot muestra este id)
+      const modal = this.page.locator('#document-preview-modal');
+    
       // 0) Card y botón existen
       await expect(this.firstDocumentCard).toBeVisible({ timeout: 20000 });
       await expect(this.firstDocumentOpenBtn).toBeVisible({ timeout: 20000 });
       await this.firstDocumentOpenBtn.scrollIntoViewIfNeeded();
     
-      // 1) Usa el modal real por id (en tu DOM existe pero a veces está "hidden")
-      const modal = this.page.locator('#document-preview-modal');
-      await expect(modal).toBeAttached({ timeout: 20000 });
-    
-      // Si quedó abierto por algo raro, ciérralo
+      // 1) Asegurar modal cerrado al inicio (si quedó abierto de un intento anterior)
       if (await modal.isVisible().catch(() => false)) {
         await this.page.keyboard.press('Escape').catch(() => {});
-        await expect(modal).toHaveClass(/hidden/, { timeout: 20000 }).catch(() => {});
+        await expect(modal).toHaveClass(/hidden/, { timeout: 15000 });
       }
     
-      // 2) Click robusto (re-render safe)
+      // 2) Click “humano” + retry (re-render safe)
       await this.retry(async () => {
-        // re-tomar el botón por si el card se re-renderizó
-        const openBtn = this.documentsList
-          .locator('[id^="document_"]')
-          .first()
-          .locator('button[data-action*="document-modal#open"]')
-          .first();
+        await expect(this.firstDocumentOpenBtn).toBeVisible({ timeout: 10000 });
+        await expect(this.firstDocumentOpenBtn).toBeEnabled({ timeout: 10000 });
     
-        await expect(openBtn).toBeVisible({ timeout: 10000 });
-        await expect(openBtn).toBeEnabled({ timeout: 10000 });
-        await openBtn.click({ force: true });
-      });
+        // Algunas UIs responden mejor a mousedown que a click “puro”
+        await this.firstDocumentOpenBtn.dispatchEvent('mousedown', { button: 0 }).catch(() => {});
+        await this.firstDocumentOpenBtn.click({ force: true });
     
-      // 3) Esperar a que el modal REALMENTE abra: que pierda "hidden"
-      await expect(modal).not.toHaveClass(/hidden/, { timeout: 20000 });
+        // Esperar condición REAL: que el modal pierda `hidden`
+        await expect(modal).not.toHaveClass(/hidden/, { timeout: 15000 });
+      }, { retries: 4, delayMs: 300 });
     
-      // 4) Verificaciones base del modal
-      await expect(this.documentModalTitle).toBeVisible({ timeout: 20000 });
+      // 3) Verificaciones base
+      await expect(this.documentModalTitle).toBeVisible();
       await expect(this.documentModalSubtitle).toBeVisible();
     
       await expect(this.documentModalType).toBeVisible();
@@ -547,7 +540,6 @@ export class OpportunityDetails extends BasePage {
       expect(fileSizeText.length).toBeGreaterThan(0);
       expect(uploadDateText.length).toBeGreaterThan(0);
     
-      // 5) Validación específica Bank Statement
       if (documentTypeText.toLowerCase() === 'bank statement') {
         await expect(this.documentModalPeriod).toBeVisible();
         const periodText = (await this.documentModalPeriod.innerText()).trim();
@@ -555,20 +547,25 @@ export class OpportunityDetails extends BasePage {
         expect(periodText).not.toBe('-');
       }
     
-      // 6) Iframe: espera a que exista y tenga src (más estable que solo visible)
+      // 4) Iframe y request
       await expect(this.documentModalPreviewIframe).toBeVisible({ timeout: 20000 });
-      await expect(this.documentModalPreviewIframe).toHaveAttribute('src', /.+/, { timeout: 20000 });
     
       const src = await this.documentModalPreviewIframe.getAttribute('src');
+      expect(src).toBeTruthy();
+    
       const absoluteUrl = new URL(src, this.page.url()).toString();
       const resp = await this.page.request.get(absoluteUrl);
       expect(resp.ok()).toBeTruthy();
     
-      // 7) Cerrar modal seguro
-      await expect(this.documentModalCloseBtn).toBeVisible({ timeout: 20000 });
+      const ct = (resp.headers()['content-type'] || '').toLowerCase();
+      expect(ct.length).toBeGreaterThan(0);
+    
+      // 5) Cerrar modal seguro
+      await expect(this.documentModalCloseBtn).toBeVisible();
       await this.documentModalCloseBtn.click();
       await expect(modal).toHaveClass(/hidden/, { timeout: 20000 });
     }
+     
     
     async verifyModalNavigationArrowsWork() {
       const modal = this.page.locator('#document-preview-modal:not(.hidden)');
