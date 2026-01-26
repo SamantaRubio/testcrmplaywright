@@ -1,0 +1,23 @@
+{
+    "accountName": "Do not delete",
+    "owner": "Emmanuel",
+    "notes": "Updated by Playwright",
+    "amount": 12345,
+    "dealType": "MCA",
+    "payment": 54321,
+    "termAmount": 12,
+    "termSchedule": "Weekly",
+    "buyRate": 1.2,
+    "sellRate": 1.35,
+    "feePercentage": 5,
+    "net": 6500,
+    "commissionPercentage": 2,
+    "position": "1st",
+    "positionType": "New Deal",
+    "approvalExpirationDate": "2026-06-08",
+    "exclusivityExpirationDate": "2026-12-21",
+    "renewalDate": "2026-05-31",
+    "lenderPaid": "Yes",
+    "repPaid": "No"
+  }
+  

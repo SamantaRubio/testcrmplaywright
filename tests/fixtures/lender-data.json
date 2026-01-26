@@ -1,0 +1,64 @@
+{
+  "basic": {
+    "name": "Playwright Lender",
+    "email": "playlender@test.com",
+    "phone": "(555) 151-4067",
+    "website": "https://www.lenderplaywright.com",
+    "opportunityTemplateLabel": "Direct Cash Group",
+    "renewalPercentage": 10.5,
+    "background": "Created by Playwright automation"
+  },
+  "api": {
+    "enabled": true,
+    "baseUrl": "https://api.playwright.com/",
+    "testUrl": "https://api.playwright.com/",
+    "apiKey": "key",
+    "apiSecret": "secret",
+    "webhookUrl": "https://playwright.com/webhooks/alt",
+    "webhookSecret": "whsec",
+    "features": {
+      "prequalification": true,
+      "preapproval": true,
+      "fullApplication": true,
+      "documentUpload": true,
+      "renewal": true,
+      "webhooks": true
+    }
+  },
+  "email": {
+    "enabled": true,
+    "ccEmail": "cc+lender@test.com"
+  },
+  "edit": {
+    "basic": {
+      "name": "Playwright Lender EDIT",
+      "email": "playlender.edit@test.com",
+      "phone": "(555) 999-0000",
+      "website": "https://www.lenderplaywright-edited.com",
+      "opportunityTemplateLabel": "Super Cash Group",
+      "renewalPercentage": 22.75,
+      "background": "Edited by Playwright automation"
+    },
+    "api": {
+      "enabled": true,
+      "baseUrl": "https://api.edited-playwright.com/",
+      "testUrl": "https://api-test.edited-playwright.com/",
+      "apiKey": "key-edit",
+      "apiSecret": "secret-edit",
+      "webhookUrl": "https://edited-playwright.com/webhooks/alt",
+      "webhookSecret": "whsec-edit",
+      "features": {
+        "prequalification": false,
+        "preapproval": true,
+        "fullApplication": false,
+        "documentUpload": true,
+        "renewal": false,
+        "webhooks": true
+      }
+    },
+    "email": {
+      "enabled": true,
+      "ccEmail": "cc+lender.edit@test.com"
+    }
+  }
+}

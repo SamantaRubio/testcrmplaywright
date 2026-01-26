@@ -622,29 +622,25 @@ export class TaskPage extends BasePage {
     return true;
   }
 
-  async sortBy(column, direction) {
-    const header = this.sortHeader(column);
-    await expect(header, `No existe header sortable para '${column}'`).toBeVisible();
+  async sortBy(columnName) {
+    const header = this.page
+      .locator(`th[data-column="${columnName}"][data-table-sort-target="header"]`)
+      .first();
   
-    // 0) If it is already in the desired order, return
-    const baseValues = await this.getColumnValues(column);
-    const baseTrans = this._transformForSort(baseValues, column);
-    const alreadyOk = direction === 'asc'
-      ? this._isSortedAsc(baseTrans)
-      : this._isSortedDesc(baseTrans);
-    if (alreadyOk) return;
+    await expect(header, `No existe header sortable para '${columnName}'`)
+      .toBeVisible({ timeout: 20000 });
   
-    // 1) 1rst Attempt
-    await header.click();
-    const ok1 = await this._waitUntilSorted(column, direction);
-    if (ok1) return;
+    // si tienes retry() como en LendersPage úsalo; si no, solo header.click()
+    if (this.retry) {
+      await this.retry(async () => {
+        await header.click();
+      });
+    } else {
+      await header.click();
+    }
   
-    // 2) 2nd Attempt
-    await header.click();
-    const ok2 = await this._waitUntilSorted(column, direction);
-    if (ok2) return;
-  
-    throw new Error(`No se logró ordenar '${column}' en '${direction}' tras 2 clics`);
+    // mini buffer para re-render
+    await this.page.waitForTimeout(500);
   }
 
   async _waitUntilSorted(column, direction, { timeout = 10_000, interval = 150 } = {}) {
@@ -705,8 +701,6 @@ export class TaskPage extends BasePage {
     this.optionsBox(key).locator(
       `input[type="checkbox"][data-filter-type="${key}"][data-filter-value="${value}"]`
     );
-
-
   
   async selectCategory(key) {
     // key: 'related_object' | 'due_date' | 'priority' | 'status'

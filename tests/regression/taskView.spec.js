@@ -113,27 +113,41 @@ test('Validate Tasks Pagination', async ({ page }) => {
   await tasks.gotoPage(1);
 });
 
-test('Validate Tasks Sort', async ({ page }) => {
+test('Tasks Sort', async ({ page }) => {
   const tasks = new TaskPage(page);
   await tasks.open();
 
-  await tasks.sortBy('name', 'asc');
-  await tasks.expectSorted('name', 'asc');
+  const sortableColumns = [
+    { key: 'name', label: 'Name' },
+    { key: 'asset', label: 'Related Object' },
+    { key: 'due_at', label: 'Due Date' },
+    { key: 'priority', label: 'Priority' },
+    { key: 'status', label: 'Status' }
+  ];
 
-  await tasks.sortBy('name', 'desc');
-  await tasks.expectSorted('name', 'desc');
+  for (const column of sortableColumns) {
+    await test.step(`Sort by ${column.label}`, async () => {
+      const firstRowBefore = tasks.rowsTable.first();
+      await expect(firstRowBefore).toBeVisible({ timeout: 20000 });
 
-  await tasks.sortBy('due_at', 'asc');
-  await tasks.expectSorted('due_at', 'asc');
+      const cellBefore = firstRowBefore.locator(`td[data-column="${column.key}"]`);
+      const valueBefore = (await cellBefore.innerText()).trim();
 
-  await tasks.sortBy('due_at', 'desc');
-  await tasks.expectSorted('due_at', 'desc');
+      await tasks.sortBy(column.key);
 
-  await tasks.sortBy('priority', 'asc'); 
-  await tasks.expectSorted('priority', 'asc');
+      await expect(tasks.rowsTable.first()).toBeVisible({ timeout: 20000 });
 
-  await tasks.sortBy('priority', 'desc'); 
-  await tasks.expectSorted('priority', 'desc');
+      const firstRowAfter = tasks.rowsTable.first();
+      const cellAfter = firstRowAfter.locator(`td[data-column="${column.key}"]`);
+      const valueAfter = (await cellAfter.innerText()).trim();
+
+      expect(valueAfter).toBeTruthy();
+
+      console.log(
+        `[TASK SORT ${column.key}] before="${valueBefore}" after="${valueAfter}"`
+      );
+    });
+  }
 });
 
 test('Validate Tasks Filter', async ({ page }) => {

@@ -351,19 +351,61 @@ export class LeadsPage extends BasePage {
         .first();
     }
 
+    // async inlineEditField(fieldName, newValue) {
+    //   await expect(
+    //     this.page.getByRole('heading', { level: 2, name: 'Lead Information' })
+    //   ).toBeVisible();
+    
+    //   const trigger = this.trigger(fieldName);
+    
+    //   await expect(
+    //     trigger,
+    //     `Inline-edit ${fieldName} no está visible`
+    //   ).toBeVisible();
+    
+    //   await trigger.scrollIntoViewIfNeeded();
+    //   await trigger.click();
+    
+    //   const editor = this.page
+    //     .locator(
+    //       `[data-inline-edit-field-name-value="${fieldName}"] input, ` +
+    //       `[data-inline-edit-field-name-value="${fieldName}"] textarea, ` +
+    //       `[data-inline-edit-field-name-value="${fieldName}"] select`
+    //     )
+    //     .first();
+    
+    //   await editor.waitFor({ state: 'visible' });
+    
+    //   const tagName = await editor.evaluate(el => el.tagName.toLowerCase());
+    
+    //   if (tagName === 'select') {
+    //     await editor.selectOption({ label: newValue });
+    //   } else {
+    //     await editor.fill(newValue);
+    //     await editor.press('Enter');
+    //   }
+    
+    //   const textToCheck = newValue.split('://').pop();
+    
+    //   // Para tag_list dejamos que lo valide editTags()
+    //   if (fieldName !== 'tag_list') {
+    //     await expect(this.trigger(fieldName)).toContainText(textToCheck);
+    //   }
+    // }    
+
     async inlineEditField(fieldName, newValue) {
       await expect(
         this.page.getByRole('heading', { level: 2, name: 'Lead Information' })
-      ).toBeVisible();
+      ).toBeVisible({ timeout: 20000 });
     
       const trigger = this.trigger(fieldName);
     
-      await expect(
-        trigger,
-        `Inline-edit ${fieldName} no está visible`
-      ).toBeVisible();
+      await expect(trigger, `Inline-edit ${fieldName} no está visible`).toBeVisible({ timeout: 20000 });
     
       await trigger.scrollIntoViewIfNeeded();
+    
+      // Abrir editor (a veces un click no entra a modo edición en CI)
+      await this.page.waitForTimeout(50);
       await trigger.click();
     
       const editor = this.page
@@ -374,22 +416,56 @@ export class LeadsPage extends BasePage {
         )
         .first();
     
-      await editor.waitFor({ state: 'visible' });
+      await editor.waitFor({ state: 'visible', timeout: 20000 });
     
-      const tagName = await editor.evaluate(el => el.tagName.toLowerCase());
+      const tagName = await editor.evaluate((el) => el.tagName.toLowerCase());
+    
+      // Helper: esperar a que deje de estar en modo edición
+      const waitUntilSaved = async () => {
+        const root = this.trigger(fieldName);
+        await expect
+          .poll(async () => {
+            // Si el atributo existe, cuando termina debe cambiar a "false"
+            const editing = await root.getAttribute('data-inline-edit-is-editing-value');
+            return editing;
+          }, { timeout: 20000 })
+          .not.toBe('true');
+      };
     
       if (tagName === 'select') {
         await editor.selectOption({ label: newValue });
+    
+        // Muchos inline-edit guardan al perder foco
+        await editor.press('Tab').catch(() => {});
+        // fallback blur (por si Tab no cambia foco)
+        await editor.evaluate((el) => el.blur()).catch(() => {});
       } else {
-        await editor.fill(newValue);
-        await editor.press('Enter');
+        await editor.fill(String(newValue));
+    
+        if (tagName === 'textarea') {
+          // ✅ textarea: guardar con blur (Enter solo mete salto de línea)
+          await editor.evaluate((el) => el.blur()).catch(() => {});
+          // fallback: click fuera para asegurar blur real
+          await this.page.locator('h1, h2').first().click({ timeout: 5000 }).catch(() => {});
+        } else {
+          // input normal: Enter suele guardar
+          await editor.press('Enter').catch(() => {});
+          // fallback: blur por si Enter no guardó
+          await editor.evaluate((el) => el.blur()).catch(() => {});
+        }
       }
     
-      const textToCheck = newValue.split('://').pop();
+      await waitUntilSaved();
+    
+      const textToCheck = String(newValue).split('://').pop();
     
       // Para tag_list dejamos que lo valide editTags()
       if (fieldName !== 'tag_list') {
-        await expect(this.trigger(fieldName)).toContainText(textToCheck);
+        const normalize = (s) => String(s || '').replace(/\s+/g, ' ').trim();
+    
+        await expect
+          .poll(async () => normalize(await this.trigger(fieldName).innerText()), { timeout: 20000 })
+          .toContain(normalize(textToCheck));
       }
     }    
 
@@ -458,79 +534,58 @@ export class LeadsPage extends BasePage {
 
     }  
 
-    // async rejectLeadFromDetails(mobile, firstName) {
-    //   await this.leadsSearch(mobile);
-    //   await this.openRowByName(firstName);
-    
-    //   this.page.once('dialog', d => d.accept());
-    
-    //   const [response] = await Promise.all([
-    //     this.page.waitForResponse(res =>
-    //       res.url().includes('/reject') && res.request().method() === 'PUT'
-    //     ),
-    //     this.rejectButtonDetails.click(),
-    //   ]);
-    
-    //   expect(response.status()).toBe(200);
-    
-    //   await this.page.waitForLoadState('networkidle');
-    //   await this.leadsSearch(mobile);
-    
-    //   await expect(this.reopenLeadButton).toBeVisible();
-    // }
-
     async rejectLeadFromDetails(mobile, firstName, maxRetries = 2) {
       for (let attempt = 1; attempt <= maxRetries; attempt++) {
         try {
-          // 1. Buscar y abrir el lead
+          // 1) Buscar y abrir el lead
           await this.leadsSearch(mobile);
           await this.openRowByName(firstName);
     
-          // 2. Preparar el handler del diálogo
-          this.page.once('dialog', async (dialog) => {
-            try {
-              await dialog.accept();
-            } catch (err) {
-              console.warn(`Error al aceptar el diálogo (intento ${attempt}):`, err);
-              // aquí podrías decidir lanzar el error si quieres que truene directo:
-              // throw err;
-            }
-          });
+          // 2) Asegurar que el botón de reject en details está listo
+          await expect(this.rejectButtonDetails).toBeVisible({ timeout: 20000 });
     
-          // 3. Click + esperar la respuesta de /reject
+          // 3) Amarrar el dialog ANTES del click (más confiable que page.once)
+          const dialogPromise = this.page
+            .waitForEvent('dialog', { timeout: 10000 })
+            .then((d) => d.accept())
+            .catch(() => {}); // por si a veces no hay dialog
+    
+          // 4) Esperar la respuesta del PUT /reject
+          const responsePromise = this.page.waitForResponse(
+            (res) => res.url().includes('/reject') && res.request().method() === 'PUT',
+            { timeout: 20000 }
+          );
+    
+          await this.rejectButtonDetails.click({ timeout: 20000 });
+    
+          // Espera al dialog (si existe) y al response
           const [response] = await Promise.all([
-            this.page.waitForResponse(res =>
-              res.url().includes('/reject') && res.request().method() === 'PUT'
-            ),
-            this.rejectButtonDetails.click(),
+            responsePromise,
+            dialogPromise,
           ]);
     
-          // 4. Validar el status
-          expect(response.status()).toBe(200);
+          // 5) Validar status “aceptable”
+          expect([200, 204]).toContain(response.status());
     
-          // 5. Esperar que la página termine de cargar y volver a buscar el lead
-          await this.page.waitForLoadState('networkidle');
+          // 6) Volver a /leads para verificar (evita que leadsSearch truene por quedarte en details)
+          await this.goto('/leads');
           await this.leadsSearch(mobile);
     
-          // 6. Verificar que ahora exista el botón de "reopen"
-          await expect(this.reopenLeadButton).toBeVisible();
+          // 7) Verificar que ahora exista el botón "reopen" (tabla)
+          await expect(this.reopenLeadButton).toBeVisible({ timeout: 20000 });
     
-          // Si todo salió bien, salimos del método
-          return;
+          return; // ✅ success
         } catch (error) {
           console.warn(`Fallo en rejectLeadFromDetails, intento ${attempt}:`, error);
     
-          // Si ya es el último intento, re-lanzamos el error para que falle el test
-          if (attempt === maxRetries) {
-            throw error;
-          }
+          if (attempt === maxRetries) throw error;
     
-          // Opcional: un pequeño wait antes de reintentar
-          // await this.page.waitForTimeout(500);
+          // mini reset para reintentar limpio
+          await this.goto('/leads');
+          await this.page.waitForTimeout(400);
         }
       }
     }
-    
     
     async reopenLead(mobile) {
       await this.leadsSearch(mobile);
@@ -547,29 +602,64 @@ export class LeadsPage extends BasePage {
 
     }
 
-    async reopenLeadFromDetails(mobile, firstName) {
-      await this.leadsSearch(mobile);
-      await this.openRowByName(firstName);
+    async reopenLeadFromDetails(mobile, firstName, maxRetries = 2) {
+      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+          // 1️⃣ Asegurar que estamos en /leads y buscar el lead
+          await this.leadsSearch(mobile);
+          await this.openRowByName(firstName);
     
-      // Aceptar el dialog de confirm
-      this.page.once('dialog', d => d.accept());
+          // 2️⃣ Asegurar que el botón de Reopen está visible en Details
+          await expect(this.reopenButtonDetails).toBeVisible({ timeout: 20000 });
     
-      const [response] = await Promise.all([
-        this.page.waitForResponse(res =>
-          res.url().includes('/reopen') && res.request().method() === 'PUT'
-        ),
-        this.reopenButtonDetails.click(),
-      ]);
+          // 3️⃣ Preparar el handler del confirm dialog ANTES del click
+          const dialogPromise = this.page
+            .waitForEvent('dialog', { timeout: 10000 })
+            .then((d) => d.accept())
+            .catch(() => {}); // por si a veces no aparece
     
-      expect(response.status()).toBe(200);
+          // 4️⃣ Esperar la respuesta real del backend (/reopen)
+          const responsePromise = this.page.waitForResponse(
+            (res) =>
+              res.url().includes('/reopen') &&
+              res.request().method() === 'PUT',
+            { timeout: 20000 }
+          );
     
-      await this.page.waitForLoadState('networkidle');
+          // 5️⃣ Click en Reopen
+          await this.reopenButtonDetails.click({ timeout: 20000 });
     
-      await this.leadsSearch(mobile);
+          const [response] = await Promise.all([
+            responsePromise,
+            dialogPromise,
+          ]);
     
-      await expect(this.rejectLeadButton).toBeVisible();
-    }    
-
+          // 6️⃣ Validar que el backend respondió correctamente
+          expect([200, 204]).toContain(response.status());
+    
+          // 7️⃣ Volver explícitamente a /leads para verificar estado
+          await this.goto('/leads');
+          await this.leadsSearch(mobile);
+    
+          // 8️⃣ Verificar que ahora el botón Reject volvió a aparecer
+          await expect(this.rejectLeadButton).toBeVisible({ timeout: 20000 });
+    
+          return; // ✅ éxito total
+        } catch (error) {
+          console.warn(
+            `Fallo en reopenLeadFromDetails, intento ${attempt}:`,
+            error
+          );
+    
+          if (attempt === maxRetries) throw error;
+    
+          // 🔁 Reset limpio antes de reintentar
+          await this.goto('/leads');
+          await this.page.waitForTimeout(400);
+        }
+      }
+    }
+    
     async expectLeadNotInList(mobile) {
       await this.leadsSearch(mobile);
       const pattern = new RegExp(esc(mobile), 'i');

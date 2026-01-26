@@ -102,12 +102,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1978,
+                  "duration": 1632,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-08T15:38:58.373Z",
+                  "startTime": "2026-01-26T15:25:33.565Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -129,59 +129,324 @@
       ]
     },
     {
-      "title": "regression/fundedDeals.spec.js",
-      "file": "regression/fundedDeals.spec.js",
+      "title": "regression/Opportunities/OpportunityDetails.spec.js",
+      "file": "regression/Opportunities/OpportunityDetails.spec.js",
       "column": 0,
       "line": 0,
-      "specs": [
+      "specs": [],
+      "suites": [
         {
-          "title": "Search Funded Deal",
-          "ok": true,
-          "tags": [],
-          "tests": [
+          "title": "Opportunity Details - dependent tests",
+          "file": "regression/Opportunities/OpportunityDetails.spec.js",
+          "line": 4,
+          "column": 15,
+          "specs": [
             {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "desktop-chromium",
-              "projectName": "desktop-chromium",
-              "results": [
+              "title": "Choose Opportunity",
+              "ok": true,
+              "tags": [],
+              "tests": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 6539,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-12-08T15:39:01.099Z",
+                  "timeout": 30000,
                   "annotations": [],
-                  "attachments": [
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
                     {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-fundedDeals-Search-Funded-Deal-desktop-chromium/video.webm"
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3969,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-26T15:25:35.772Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-4f107-nt-tests-Choose-Opportunity-desktop-chromium/video.webm"
+                        }
+                      ]
                     }
-                  ]
+                  ],
+                  "status": "expected"
                 }
               ],
-              "status": "expected"
+              "id": "dc7214fa3f39fbb23078-912e0db06c8df7396690",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 7,
+              "column": 5
+            },
+            {
+              "title": "Search Opportunity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6998,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-26T15:25:39.856Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-991b8-nt-tests-Search-Opportunity-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dc7214fa3f39fbb23078-1c3494ff8140ff17586e",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 14,
+              "column": 5
+            },
+            {
+              "title": "Upload Bank Statement and Search in Documents",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8433,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Expect \"poll toBe\"",
+                          "duration": 12
+                        }
+                      ],
+                      "startTime": "2026-01-26T15:25:46.856Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-da60a-ent-and-Search-in-Documents-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dc7214fa3f39fbb23078-6fcf86eed0406d03ad90",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 21,
+              "column": 5
+            },
+            {
+              "title": "Select document in Documents widget",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7765,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-26T15:25:55.291Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-02d14-ocument-in-Documents-widget-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dc7214fa3f39fbb23078-050b90131655731fb859",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 39,
+              "column": 5
+            },
+            {
+              "title": "Select/Deselect all documents",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8176,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Expect \"poll toBe\"",
+                          "duration": 83
+                        },
+                        {
+                          "title": "Expect \"poll toBe\"",
+                          "duration": 64
+                        }
+                      ],
+                      "startTime": "2026-01-26T15:26:03.057Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-e0932-lect-Deselect-all-documents-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dc7214fa3f39fbb23078-218436a75caac86a399f",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 48,
+              "column": 5
+            },
+            {
+              "title": "Download document with Direct Cash Group Watermark",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7997,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-26T15:26:11.234Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-5616a-Direct-Cash-Group-Watermark-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dc7214fa3f39fbb23078-cccc963f74f892298af4",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 58,
+              "column": 5
+            },
+            {
+              "title": "Download document with Super Cash Group Watermark",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8183,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-26T15:26:19.234Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Opportunities-O-152a8--Super-Cash-Group-Watermark-desktop-chromium/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dc7214fa3f39fbb23078-ae9dc4988dd3d766b58e",
+              "file": "regression/Opportunities/OpportunityDetails.spec.js",
+              "line": 68,
+              "column": 5
             }
-          ],
-          "id": "b1238a4f487e12b30208-8e3c127bcbbbace4c85a",
-          "file": "regression/fundedDeals.spec.js",
-          "line": 4,
-          "column": 1
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-08T15:38:58.054Z",
-    "duration": 9979.18,
-    "expected": 2,
+    "startTime": "2026-01-26T15:25:33.158Z",
+    "duration": 54282.448000000004,
+    "expected": 8,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

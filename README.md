@@ -23,3 +23,4 @@ npx playwright test --debug
 npx playwright test --ui
 # Command to run with headed mode:
 npx playwright test --headed
+

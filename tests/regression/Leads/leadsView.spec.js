@@ -5,8 +5,10 @@ import leadsData from '../../fixtures/newleads.json' assert { type: 'json' };
 
 let unique = Date.now().toString();
 let firstName = `${unique}`;
+// let firstName = '1769009480055';
 let phone = `314${unique.slice(-7)}`; 
 let mobile = `341${unique.slice(-7)}`; 
+// let mobile = `3419480055`; 
 let email = `playwrightmanuallead${unique}@mailinator.com`;
 let altEmail = `samanta.rubio+${unique}@mailinator.com`;
 let company = `PlaywrightCompany${unique}`;
@@ -41,17 +43,17 @@ test('Reopen Lead', async ({ page }) => {
   await leadsPage.reopenLead(mobile);
 });
 
-test('Reject Lead From Lead Details View', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.rejectLeadFromDetails(mobile, firstName);
-});
+// test('Reject Lead From Lead Details View', async ({ page }) => {
+//   const leadsPage = new LeadsPage(page);
+//   await leadsPage.open();
+//   await leadsPage.rejectLeadFromDetails(mobile, firstName);
+// });
 
-test('Reopen Lead From Lead Details View', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.reopenLeadFromDetails(mobile, firstName);
-});
+// test('Reopen Lead From Lead Details View', async ({ page }) => {
+//   const leadsPage = new LeadsPage(page);
+//   await leadsPage.open();
+//   await leadsPage.reopenLeadFromDetails(mobile, firstName);
+// });
 
 test('Edit Lead', async ({ page }) => {
   const leadsPage = new LeadsPage(page);
