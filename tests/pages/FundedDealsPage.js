@@ -8,7 +8,9 @@ export class FundedDealsPage extends BasePage {
         this.visualizeCommissionIcon = page.locator('[data-stats-cards-target="eyeIcon"]');
         this.hideCommissionIcon = page.locator('[data-stats-cards-target="eyeSlashIcon"]');
         this.commissionsLabel = page.locator('#stats-total-commission-mtd');
-        this.actionsMenuButton = this.page.locator('button[data-action="click->dropdown#toggle"]');
+        this.actionsMenuButton = page.locator('td.text-right [data-controller="dropdown"] > button[data-action="click->dropdown#toggle"]');
+        this.actionsCell = page.locator('td.text-right');
+        this.dropdownById = this.actionsCell.locator(`[data-dropdown-target="menu"]`);
         this.deleteButton = this.page.locator('button[type="submit"]', { hasText: 'Delete' });
 
         // Funded Deals Table
@@ -575,15 +577,49 @@ export class FundedDealsPage extends BasePage {
     getRowByName(partialName) {
       return this.fundedDealsRows.filter({ hasText: partialName }).first();
     }
+
+    async openActionsDropdown() {
+      const btn = this.actionsMenuButton;
+      const dropdown = this.dropdownById;
+    
+      await expect(btn).toBeVisible({ timeout: 15000 });
+      await btn.scrollIntoViewIfNeeded();
+    
+      // 1) normal attempt (hover + click)
+      await btn.hover().catch(() => {});
+      await btn.click({ timeout: 5000 }).catch(() => {});
+    
+      // if it did open
+      if (await dropdown.isVisible().catch(() => false)) return;
+    
+      // 2) attempt with force
+      await btn.click({ force: true, timeout: 5000 }).catch(() => {});
+      if (await dropdown.isVisible().catch(() => false)) return;
+    
+      // 3) dispatchEvent click (triggers stimulus action)
+      await btn.dispatchEvent('click').catch(() => {});
+      if (await dropdown.isVisible().catch(() => false)) return;
+    
+      // 4) human click with mouse
+      const box = await btn.boundingBox();
+      if (!box) throw new Error(`actions btn boundingBox was not obtained`);
+    
+      await this.page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await this.page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+    
+      await expect(dropdown, `Actions dropdown was not opened`)
+        .toBeVisible({ timeout: 8000 });
+    }
     
     async deleteFundedDeal(partialName) {
       const row = this.getRowByName(partialName);
       await expect(row).toBeVisible();
     
       // 🔹 botón ⋮ SOLO dentro del row
-      const actionsMenuButton = row.locator('button[data-action="click->dropdown#toggle"]').first();
-      await expect(actionsMenuButton).toBeVisible();
-      await actionsMenuButton.click();
+      // const actionsMenuButton = row.locator('button[data-action="click->dropdown#toggle"]').first();
+      // await expect(actionsMenuButton).toBeVisible();
+      // await actionsMenuButton.click();
+      await this.openActionsDropdown();
     
       // 🔹 botón Delete SOLO dentro del row (en el dropdown)
       const deleteBtn = row.locator('button[type="submit"]', { hasText: 'Delete' }).first();

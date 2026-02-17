@@ -13,10 +13,11 @@ export class LeadsPage extends BasePage {
         this.searchInput = this.getByTestId('search-leads');
         this.createLeadButton = this.getByTestId('create-lead-button');
         this.createLeadFrame = page.locator('#lead_form');
-        this.actionsButton = this.page.locator('button[id^="lead-actions-button-"]');
         this.convertButton = this.page.locator('a[id^="lead-convert-button-"]');
         this.contactsTable = this.page.locator('#contacts-table');
         this.convertButton2 = page.locator('a[href$="/convert"]');
+        this.actionsBtnById = (leadId) => this.page.locator(`#lead-actions-button-${leadId}`);
+        this.dropdownById = this.page.locator(`[data-lead-actions-target="dropdown"]`);
 
 
         // ==== Basic Information ====
@@ -139,12 +140,45 @@ export class LeadsPage extends BasePage {
         }
     }
 
+    async openActionsDropdown(leadId) {
+      const btn = this.actionsBtnById(leadId);
+      const dropdown = this.dropdownById;
+    
+      await expect(btn).toBeVisible({ timeout: 15000 });
+      await btn.scrollIntoViewIfNeeded();
+    
+      // 1) normal (hover + click)
+      await btn.hover().catch(() => {});
+      await btn.click({ timeout: 5000 }).catch(() => {});
+    
+      // if it was opened
+      if (await dropdown.isVisible().catch(() => false)) return;
+    
+      // 2) 2nd attemp with force
+      await btn.click({ force: true, timeout: 5000 }).catch(() => {});
+      if (await dropdown.isVisible().catch(() => false)) return;
+    
+      // 3) dispatchEvent click (triggers stimulus action)
+      await btn.dispatchEvent('click').catch(() => {});
+      if (await dropdown.isVisible().catch(() => false)) return;
+    
+      // 4) human click with mouse
+      const box = await btn.boundingBox();
+      if (!box) throw new Error(`Actions btn's boundingBox for ${leadId} was not obtained`);
+    
+      await this.page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await this.page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+    
+      await expect(dropdown, `The actions dropdown for leadId=${leadId} did not open`)
+        .toBeVisible({ timeout: 8000 });
+    }
+
     async deleteImportedLeads(phones = []) {
       await this.goto('/leads');
       await expect(this.leadsContainer).toBeVisible();
 
       for (const phone of phones) {
-        // 1) Buscar el lead por teléfono
+        // 1) Search lead with phone
         await this.leadsSearch(phone);
 
         const row = this.leadsContainer
@@ -154,12 +188,16 @@ export class LeadsPage extends BasePage {
 
         await expect(
           row,
-          `No se encontró el lead con phone ${phone}`
+          `Lead with phone ${phone} was not found`
         ).toBeVisible();
 
-        // 2) Abrir el menú de acciones (botón de 3 puntitos)
-        const actionsButton = row.locator('button[id^="lead-actions-button-"]');
-        await actionsButton.click();
+        // // 2) Abrir el menú de acciones (botón de 3 puntitos)
+        // const actionsButton = row.locator('button[id^="lead-actions-button-"]');
+        // await actionsButton.click();
+        const contactId = await row.getAttribute('data-lead-id');
+        if (!contactId) throw new Error(`contactId for ${contactName} was not found`);
+      
+        await this.openActionsDropdown(contactId);
 
         // 3) Localizar el botón Delete dentro del dropdown de ESA fila
         const deleteButton = row.locator(
@@ -350,48 +388,6 @@ export class LeadsPage extends BasePage {
         )
         .first();
     }
-
-    // async inlineEditField(fieldName, newValue) {
-    //   await expect(
-    //     this.page.getByRole('heading', { level: 2, name: 'Lead Information' })
-    //   ).toBeVisible();
-    
-    //   const trigger = this.trigger(fieldName);
-    
-    //   await expect(
-    //     trigger,
-    //     `Inline-edit ${fieldName} no está visible`
-    //   ).toBeVisible();
-    
-    //   await trigger.scrollIntoViewIfNeeded();
-    //   await trigger.click();
-    
-    //   const editor = this.page
-    //     .locator(
-    //       `[data-inline-edit-field-name-value="${fieldName}"] input, ` +
-    //       `[data-inline-edit-field-name-value="${fieldName}"] textarea, ` +
-    //       `[data-inline-edit-field-name-value="${fieldName}"] select`
-    //     )
-    //     .first();
-    
-    //   await editor.waitFor({ state: 'visible' });
-    
-    //   const tagName = await editor.evaluate(el => el.tagName.toLowerCase());
-    
-    //   if (tagName === 'select') {
-    //     await editor.selectOption({ label: newValue });
-    //   } else {
-    //     await editor.fill(newValue);
-    //     await editor.press('Enter');
-    //   }
-    
-    //   const textToCheck = newValue.split('://').pop();
-    
-    //   // Para tag_list dejamos que lo valide editTags()
-    //   if (fieldName !== 'tag_list') {
-    //     await expect(this.trigger(fieldName)).toContainText(textToCheck);
-    //   }
-    // }    
 
     async inlineEditField(fieldName, newValue) {
       await expect(

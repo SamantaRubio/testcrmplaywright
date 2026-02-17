@@ -1,0 +1,72 @@
+{
+    "basic": {
+      "salutationLabel": "Mr.",
+      "assignedToLabel": "Guy J.",
+      "tags": "playwright,automation"
+    },
+    "account": {
+      "search": "Do not delete",
+      "selectLabel": "Do not delete"
+    },
+    "job": {
+      "titleLabel": "Owner",
+      "department": "QA"
+    },
+    "additional": {
+      "altEmailPrefix": "alt.playwright",
+      "doNotCall": false
+    },
+    "address": {
+      "street1": "123 Playwright St",
+      "street2": "Suite 10",
+      "city": "Vancouver",
+      "state": "Washington",
+      "zipcode": "98660"
+    },
+    "web": {
+      "blog": "https://example.com",
+      "twitter": "@playwright",
+      "linkedin": "https://linkedin.com/in/playwright",
+      "facebook": "https://facebook.com/playwright"
+    },
+  
+    "edit": {
+      "basic": {
+        "middleName": "EditedInline",
+        "nickname": "PW Updated",
+        "titleLabel": "CEO",
+        "department": "PW Automation",
+        "bornOn": "1996-02-10"
+      },
+      "additional": {
+        "altEmail": "alt.edited.pw",
+        "doNotCall": "Do not call",
+        "ownership": "10.5",
+        "assignedTo": "Mariana Ochoa",
+        "source": "Email",
+        "access": "Keep Private",
+        "status": "Inactive"
+      },
+      "address": {
+        "street1": "999 Updated St",
+        "street2": "Updated 2",
+        "city": "Seattle",
+        "state": "California",
+        "zipcode": "12345"
+      },
+      "web": {
+        "blog": "www.edited.example.com",
+        "twitter": "@playwright_edited",
+        "linkedin": "https://linkedin.com/in/playwright-edited",
+        "facebook": "https://facebook.com/playwright.edited"
+      },
+      "financial": {
+        "ssn": "123-45-6789",
+        "estimatedCreditScore": "489"
+      },
+      "backgroundInfo": "Updated background info from Playwright",
+      "tags": ["Playwright", "automation", "edited"],
+      "comment": "Playwright edit test: updated fields + tags + comment."
+    }
+  }
+  

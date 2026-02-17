@@ -102,14 +102,20 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2033,
+                  "duration": 1827,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-01-26T16:14:31.607Z",
+                  "startTime": "2026-02-17T19:18:00.565Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/setup-auth.setup.js-save-authenticated-storage-setup/video.webm"
+                    }
+                  ]
                 }
               ],
               "status": "expected"
@@ -123,20 +129,20 @@
       ]
     },
     {
-      "title": "regression/Opportunities/OpportunityDetails.spec.js",
-      "file": "regression/Opportunities/OpportunityDetails.spec.js",
+      "title": "regression/GravityFormsApplication.spec.js",
+      "file": "regression/GravityFormsApplication.spec.js",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Opportunity Details - dependent tests",
-          "file": "regression/Opportunities/OpportunityDetails.spec.js",
-          "line": 4,
-          "column": 15,
+          "title": "Gravity forms -> CRM verification",
+          "file": "regression/GravityFormsApplication.spec.js",
+          "line": 7,
+          "column": 6,
           "specs": [
             {
-              "title": "Choose Opportunity",
+              "title": "submit external application and verify in CRM",
               "ok": true,
               "tags": [],
               "tests": [
@@ -151,301 +157,53 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3952,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-01-26T16:14:34.227Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "dc7214fa3f39fbb23078-912e0db06c8df7396690",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 7,
-              "column": 5
-            },
-            {
-              "title": "Search Opportunity",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 6746,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-01-26T16:14:38.289Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "dc7214fa3f39fbb23078-1c3494ff8140ff17586e",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 14,
-              "column": 5
-            },
-            {
-              "title": "Upload Bank Statement and Search in Documents",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 14513,
+                      "duration": 16987,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
                       "steps": [
                         {
-                          "title": "Expect \"poll toBe\"",
-                          "duration": 6014,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 7000ms exceeded while waiting on the predicate",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 7000ms exceeded while waiting on the predicate\n    at OpportunityDetails._waitUploadFormOpened (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/OpportunityDetails.js:149:7)\n    at OpportunityDetails.openUploadForm (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/OpportunityDetails.js:182:24)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/Opportunities/OpportunityDetails.spec.js:30:9",
-                            "location": {
-                              "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/OpportunityDetails.js",
-                              "column": 7,
-                              "line": 149
+                          "title": "Open and fill Gravity Forms",
+                          "duration": 16928,
+                          "steps": [
+                            {
+                              "title": "Expect \"✅ BankStatement1.pdf cargado correctamente.\"",
+                              "duration": 13
                             },
-                            "snippet": "\u001b[90m   at \u001b[39mpages/OpportunityDetails.js:149\n\n\u001b[0m \u001b[90m 147 |\u001b[39m\n \u001b[90m 148 |\u001b[39m     \u001b[36masync\u001b[39m _waitUploadFormOpened({ timeout \u001b[33m=\u001b[39m \u001b[35m15000\u001b[39m } \u001b[33m=\u001b[39m {}) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 149 |\u001b[39m       \u001b[36mawait\u001b[39m expect\n \u001b[90m     |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 150 |\u001b[39m         \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 151 |\u001b[39m           \u001b[36mconst\u001b[39m attached \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39muploadForm\u001b[33m.\u001b[39mcount()\u001b[33m;\u001b[39m\n \u001b[90m 152 |\u001b[39m           \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mattached) \u001b[36mreturn\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m;\u001b[39m\u001b[0m"
-                          }
-                        },
-                        {
-                          "title": "Expect \"poll toBe\"",
-                          "duration": 17
+                            {
+                              "title": "Expect \"✅ BankStatement2.pdf cargado correctamente.\"",
+                              "duration": 9
+                            },
+                            {
+                              "title": "Expect \"✅ BankStatement3.pdf cargado correctamente.\"",
+                              "duration": 9
+                            },
+                            {
+                              "title": "Verify records in CRM via Global Search",
+                              "duration": 8658
+                            }
+                          ]
                         }
                       ],
-                      "startTime": "2026-01-26T16:14:45.036Z",
+                      "startTime": "2026-02-17T19:18:02.822Z",
                       "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "dc7214fa3f39fbb23078-6fcf86eed0406d03ad90",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 21,
-              "column": 5
-            },
-            {
-              "title": "Select document in Documents widget",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 7593,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-01-26T16:14:59.549Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "dc7214fa3f39fbb23078-050b90131655731fb859",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 39,
-              "column": 5
-            },
-            {
-              "title": "Select/Deselect all documents",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 7930,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "steps": [
+                      "attachments": [
                         {
-                          "title": "Expect \"poll toBe\"",
-                          "duration": 87
-                        },
-                        {
-                          "title": "Expect \"poll toBe\"",
-                          "duration": 70
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-GravityFormsApp-f11c8-plication-and-verify-in-CRM-desktop-chromium/video.webm"
                         }
-                      ],
-                      "startTime": "2026-01-26T16:15:07.144Z",
-                      "annotations": [],
-                      "attachments": []
+                      ]
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "dc7214fa3f39fbb23078-218436a75caac86a399f",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 48,
-              "column": 5
-            },
-            {
-              "title": "Download document with Direct Cash Group Watermark",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 7532,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-01-26T16:15:15.075Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "dc7214fa3f39fbb23078-cccc963f74f892298af4",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 58,
-              "column": 5
-            },
-            {
-              "title": "Download document with Super Cash Group Watermark",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 7848,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-01-26T16:15:22.609Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "dc7214fa3f39fbb23078-ae9dc4988dd3d766b58e",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 68,
-              "column": 5
-            },
-            {
-              "title": "Preview in Modal and navigation",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 23096,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "steps": [
-                        {
-                          "title": "Expect \"poll not toBe\"",
-                          "duration": 2
-                        },
-                        {
-                          "title": "Expect \"poll toBe\"",
-                          "duration": 2
-                        }
-                      ],
-                      "startTime": "2026-01-26T16:15:30.458Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "dc7214fa3f39fbb23078-1261cb2c32bbf8801d57",
-              "file": "regression/Opportunities/OpportunityDetails.spec.js",
-              "line": 78,
-              "column": 5
+              "id": "42f64f83061393f1f065-956813d3280690f4e77c",
+              "file": "regression/GravityFormsApplication.spec.js",
+              "line": 12,
+              "column": 3
             }
           ]
         }
@@ -454,9 +212,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-01-26T16:14:31.279Z",
-    "duration": 82302.779,
-    "expected": 9,
+    "startTime": "2026-02-17T19:18:00.141Z",
+    "duration": 19802.939000000002,
+    "expected": 2,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

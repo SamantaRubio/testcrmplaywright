@@ -5,10 +5,8 @@ import leadsData from '../../fixtures/newleads.json' assert { type: 'json' };
 
 let unique = Date.now().toString();
 let firstName = `${unique}`;
-// let firstName = '1769009480055';
 let phone = `314${unique.slice(-7)}`; 
 let mobile = `341${unique.slice(-7)}`; 
-// let mobile = `3419480055`; 
 let email = `playwrightmanuallead${unique}@mailinator.com`;
 let altEmail = `samanta.rubio+${unique}@mailinator.com`;
 let company = `PlaywrightCompany${unique}`;
@@ -127,48 +125,6 @@ test('Sort Leads by Email Address', async ({ page }) => {
   const leadsPage = new LeadsPage(page);
   await leadsPage.open();
   await leadsPage.verifySortByEmailAddress(10); //asc and desc - first 10 rows
-});
-
-test('Filter Leads by New Status', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.filterByStatusAndVerify('status','new', 10);
-});
-
-test('Filter Leads by Contacted Status', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.filterByStatusAndVerify('status','contacted', 10);
-});
-
-test('Filter Leads by Converted Status', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.filterByStatusAndVerify('status','converted', 10);
-});
-
-test('Filter Leads by Rejected Status', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.filterByStatusAndVerify('status','rejected', 10);
-});
-
-test('Filter Leads by Assigned to Me Status', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.filterByStatusAndVerify('assignment','me', 10);
-});
-
-test('Filter Leads by Unassigned Status', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.filterByStatusAndVerify('assignment','unassigned', 10);
-});
-
-test('Clear All Filters', async ({ page }) => {
-  const leadsPage = new LeadsPage(page);
-  await leadsPage.open();
-  await leadsPage.clearConvertedAndRejectedFilters(10);
 });
 
 

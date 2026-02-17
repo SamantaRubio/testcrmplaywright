@@ -11,6 +11,7 @@ export class TaskPage extends BasePage {
     this.searchInput = this.getByTestId('search-tasks');
     this.filterButton = this.getByTestId('filter-tasks-button');
     this.actionsButton = this.getByTestId('tasks-table').locator('tbody [data-controller="task-actions"] [data-task-actions-target="button"]');
+    this.dropdownById = this.page.locator(`[data-task-actions-target="dropdown"]`);
     this.taskContainer = this.page.locator('.tasks-container');
     this.rowsTable = this.getByTestId('tasks-table').locator('tbody tr[id^="task-row-"]');
     this.pagination = this.getByTestId('tasks-pagination');
@@ -470,8 +471,41 @@ export class TaskPage extends BasePage {
     await expect(statusCell).toContainText(new RegExp(`^\\s*${expected}\\s*$`, 'i'));
   }
 
+  async openActionsDropdown() {
+    const btn = this.actionsButton
+    const dropdown = this.dropdownById;
+  
+    await expect(btn).toBeVisible({ timeout: 15000 });
+    await btn.scrollIntoViewIfNeeded();
+  
+    // 1) normal attempt (hover + click)
+    await btn.hover().catch(() => {});
+    await btn.click({ timeout: 5000 }).catch(() => {});
+  
+    // if it did open
+    if (await dropdown.isVisible().catch(() => false)) return;
+  
+    // 2) attempt with force
+    await btn.click({ force: true, timeout: 5000 }).catch(() => {});
+    if (await dropdown.isVisible().catch(() => false)) return;
+  
+    // 3) dispatchEvent click (triggers stimulus action)
+    await btn.dispatchEvent('click').catch(() => {});
+    if (await dropdown.isVisible().catch(() => false)) return;
+  
+    // 4) human click with mouse
+    const box = await btn.boundingBox();
+    if (!box) throw new Error(`actions btn boundingBox was not obtained`);
+  
+    await this.page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await this.page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+  
+    await expect(dropdown, `Actions dropdown was not opened`)
+      .toBeVisible({ timeout: 8000 });
+  }
+
   async deleteTaskByName(name) {
-    await this.actionsButton.click();
+    await this.openActionsDropdown();
     // preparar confirm() ANTES del click
     this.page.once('dialog', d => d.accept());
   

@@ -77,38 +77,6 @@ export class GravityFormPage {
     await this.waitForUploadsComplete(names);
   }
 
-  // async waitForUploadsComplete(fileNames, timeout = 50_000) {
-  //   for (const name of fileNames) {
-  //     // Contenedor del archivo (div.ginput_preview que contiene el filename)
-  //     const item = this.page.locator('.ginput_preview', {
-  //       has: this.page.locator('.gfield_fileupload_filename', { hasText: name })
-  //     });
-  
-  //     await expect(item, `No se encontró el contenedor para ${name}`).toBeVisible({ timeout });
-  
-  //     // 1) 100% visible
-  //     const percent = item.locator('.gfield_fileupload_percent');
-  //     await expect(percent, `${name}: el porcentaje no llegó a 100%`).toHaveText(/100%/i, { timeout });
-  
-  //     // 2) Barra con width: 100%
-  //     const bar = item.locator('.gfield_fileupload_progressbar_progress');
-  //     await expect(bar, `${name}: la barra no está al 100%`)
-  //       .toHaveAttribute('style', /width:\s*100%/i, { timeout });
-  
-  //     // 3) Estado FINAL: hay botón de borrar y NO hay "Cancel"
-  //     const deleteBtn = item.locator('button.gform_delete_file'); // icono de basura
-  //     await expect(deleteBtn, `${name}: aún no aparece el botón de borrar`).toBeVisible({ timeout });
-  
-  //     // “Cancel” desaparece al completar
-  //     const cancelBtn = item.getByRole('button', { name: /cancel/i });
-  //     await expect(cancelBtn, `${name}: sigue mostrando 'Cancel' (upload no finalizó)`).toHaveCount(0, { timeout });
-  //   }
-  
-  //   // (Opcional) Validación global: cantidad de ítems completos = cantidad de archivos
-  //   const completedItems = this.page.locator('.ginput_preview button.gform_delete_file');
-  //   await expect(completedItems).toHaveCount(fileNames.length, { timeout });
-  // }
-
   async waitForUploadsComplete(fileNames, timeout = 50_000) {
     for (const name of fileNames) {
       // Contenedor del archivo

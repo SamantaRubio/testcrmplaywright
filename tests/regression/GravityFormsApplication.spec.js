@@ -49,8 +49,7 @@ test.describe('Gravity forms -> CRM verification', () => {
         const categories = [
           { type: 'Opportunities', value: company,               selectorType: 'h1' },
           { type: 'Accounts',      value: company,               selectorType: 'h1' },
-          { type: 'Contacts',      value: data.owner.first,      selectorType: 'h1' },
-         // { type: 'Leads',         value: data.owner.first,      selectorType: 'h1' },
+          { type: 'Contacts',      value: data.owner.first,      selectorType: 'h1' }
         ];
 
         for (const item of categories) {

@@ -6,7 +6,7 @@
     "website": "https://www.lenderplaywright.com",
     "opportunityTemplateLabel": "Direct Cash Group",
     "renewalPercentage": 10.5,
-    "background": "Created by Playwright automation"
+    "aiContext": "AI Context created by Playwright automation"
   },
   "api": {
     "enabled": true,
@@ -14,6 +14,8 @@
     "testUrl": "https://api.playwright.com/",
     "apiKey": "key",
     "apiSecret": "secret",
+    "apiUsername": "apiUsername",
+    "apiPassword": "apiPassword",
     "webhookUrl": "https://playwright.com/webhooks/alt",
     "webhookSecret": "whsec",
     "features": {
@@ -37,7 +39,7 @@
       "website": "https://www.lenderplaywright-edited.com",
       "opportunityTemplateLabel": "Super Cash Group",
       "renewalPercentage": 22.75,
-      "background": "Edited by Playwright automation"
+      "aiContext": "ai context edited by Playwright automation"
     },
     "api": {
       "enabled": true,
@@ -45,8 +47,11 @@
       "testUrl": "https://api-test.edited-playwright.com/",
       "apiKey": "key-edit",
       "apiSecret": "secret-edit",
+      "apiUsername": "apiUsernameEdited",
+      "apiPassword": "apiPasswordEdited",
       "webhookUrl": "https://edited-playwright.com/webhooks/alt",
       "webhookSecret": "whsec-edit",
+      "jsonConfig": "{\n \"age\": 30,\n \"lastName\": \"Automation\",\n \"firstName\": \"Playwright\",\n \"department\": \"Engineering\",\n  \"isEmployee\": true\n }",
       "features": {
         "prequalification": false,
         "preapproval": true,

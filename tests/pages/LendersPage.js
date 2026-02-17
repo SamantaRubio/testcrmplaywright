@@ -18,7 +18,8 @@ export default class LendersPage extends BasePage {
     this.websiteInput = page.locator('#lender_website');
     this.opportunityTemplateSelect = page.locator('#lender_opportunity_template_id');
     this.renewalPercentageInput = page.locator('#lender_lender_renewal_percentage');
-    this.backgroundTextarea = page.locator('#lender_background_info');
+    this.aicontextTextarea = page.locator('#lender_context');
+
 
     // API Configuration (new form)
     this.apiEnabledCheckbox = page.locator('#api-enabled-new');
@@ -27,7 +28,9 @@ export default class LendersPage extends BasePage {
     this.apiTestUrlInput = page.locator('#lender_api_test_url');
     this.apiKeyInput = page.locator('#lender_api_key');
     this.apiSecretInput = page.locator('#lender_api_secret');
-    this.webhookUrlInput = page.locator('#lender_webhook_url');
+    //this.webhookUrlInput = page.locator('#lender_webhook_url');
+    this.apiUsername = page.locator('#lender_api_credentials_username');
+    this.apiPassword = page.locator('#lender_api_credentials_password');
     this.webhookSecretInput = page.locator('#lender_webhook_secret');
 
     // Supported Features (new form)
@@ -49,8 +52,7 @@ export default class LendersPage extends BasePage {
     this.lenderRows = page.locator('#lenders-container tr[data-table-sort-target="row"]');
 
     // ---------- EDIT/SHOW: inline edit ----------
-    // Root: cada field inline tiene id="lender-<id>-<field>"
-    // Ejemplo: lender-397-name, lender-397-email, ...
+    this.aicontextEdit = page.locator('[id^="lender-"][id$="-context"]');
   }
 
   // ---------- helpers anti flaky ----------
@@ -116,7 +118,7 @@ export default class LendersPage extends BasePage {
       await this.renewalPercentageInput.fill(String(data.renewalPercentage));
     }
 
-    if (data.background) await this.backgroundTextarea.fill(data.background);
+    if (data.aiContext) await this.aicontextTextarea.fill(data.aiContext);
   }
 
   async enableApiAndFill(data) {
@@ -134,7 +136,9 @@ export default class LendersPage extends BasePage {
     if (data.testUrl) await this.apiTestUrlInput.fill(data.testUrl);
     if (data.apiKey) await this.apiKeyInput.fill(data.apiKey);
     if (data.apiSecret) await this.apiSecretInput.fill(data.apiSecret);
-    if (data.webhookUrl) await this.webhookUrlInput.fill(data.webhookUrl);
+    // if (data.webhookUrl) await this.webhookUrlInput.fill(data.webhookUrl);
+    if (data.apiUsername) await this.apiUsername.fill(data.apiUsername);
+    if (data.apiPassword) await this.apiPassword.fill(data.apiPassword);
     if (data.webhookSecret) await this.webhookSecretInput.fill(data.webhookSecret);
 
     if (data.features?.prequalification) await this.supportsPrequalification.check({ force: true });
@@ -266,43 +270,8 @@ export default class LendersPage extends BasePage {
   }
   
   isPasswordField(fieldName) {
-    return ['api_key', 'api_secret', 'webhook_secret'].includes(fieldName);
+    return ['api_key', 'api_secret', 'webhook_secret', 'api_credentials_password'].includes(fieldName);
   }
-
-  // async inlineEditText(fieldName, newValue) {
-  //   const root = this.lenderFieldRootByName(fieldName);
-  //   await expect(root).toBeVisible({ timeout: 20000 });
-  //   await root.scrollIntoViewIfNeeded();
-  
-  //   // abrir editor
-  //   await this.retry(async () => {
-  //     await root.click();
-  //   });
-  
-  //   // input / textarea
-  //   const input = root.locator('input, textarea').first();
-  //   await expect(input).toBeVisible({ timeout: 20000 });
-  
-  //   await input.fill(String(newValue));
-  //   const tag = await input.evaluate((el) => el.tagName.toLowerCase());
-  //   if (tag === 'textarea') {
-  //     await input.blur();
-  //   } else {
-  //     await input.press('Enter');
-  //   }
-
-  //   await expect(input).toBeHidden({ timeout: 20000 });
-  
-  //   // secret keys
-  //   const valueText = root.locator('.text-sm.text-gray-900').first();
-  //   if (['api_key', 'api_secret', 'webhook_secret'].includes(fieldName)) {
-  //     await expect(valueText).toBeVisible({ timeout: 200000 });
-  //     await expect(valueText).toContainText('•', { timeout: 200000 }); // password
-  //     return;
-  //   }
-
-  //   await expect(valueText).toContainText(String(newValue), { timeout: 200000 });
-  // }
 
   async inlineEditText(fieldName, newValue) {
     const root = this.lenderFieldRootByName(fieldName);
@@ -418,8 +387,8 @@ export default class LendersPage extends BasePage {
       await expect(root).toContainText(String(editData.basic.renewalPercentage), { timeout: 20000 });
     }
 
-    if (editData.basic?.background) {
-      await this.inlineEditText('background_info', editData.basic.background);
+    if (editData.basic?.aiContext) {
+      await this.inlineEditText('context', editData.basic.aiContext);
     }
 
     // API (checkbox-toggle en show/edit)
@@ -430,23 +399,23 @@ export default class LendersPage extends BasePage {
     if (editData.api?.enabled) {
       if (editData.api.baseUrl) await this.inlineEditText('api_base_url', editData.api.baseUrl);
       if (editData.api.testUrl) await this.inlineEditText('api_test_url', editData.api.testUrl);
-
-      // Password fields (api_key/api_secret/webhook_secret) son tipo password
-      // Inline edit igual funciona: click -> input -> enter -> vuelve a "••••"
       if (editData.api.apiKey) await this.inlineEditText('api_key', editData.api.apiKey);
       if (editData.api.apiSecret) await this.inlineEditText('api_secret', editData.api.apiSecret);
-      if (editData.api.webhookUrl) await this.inlineEditText('webhook_url', editData.api.webhookUrl);
+      if (editData.api.apiUsername) await this.inlineEditText('api_credentials_username', editData.api.apiUsername);
+      if (editData.api.apiPassword) await this.inlineEditText('api_credentials_password', editData.api.apiPassword);
       if (editData.api.webhookSecret) await this.inlineEditText('webhook_secret', editData.api.webhookSecret);
 
+      if (editData.api.jsonConfig) await this.inlineEditText('api_config', editData.api.jsonConfig);
+
       // Supported features toggles (ids del HTML que mandaste)
-      if (editData.api.features) {
-        await this.checkboxToggleById('feature-prequalification', !!editData.api.features.prequalification);
-        await this.checkboxToggleById('feature-preapproval', !!editData.api.features.preapproval);
-        await this.checkboxToggleById('feature-full-application', !!editData.api.features.fullApplication);
-        await this.checkboxToggleById('feature-document-upload', !!editData.api.features.documentUpload);
-        await this.checkboxToggleById('feature-renewal', !!editData.api.features.renewal);
-        await this.checkboxToggleById('feature-webhooks', !!editData.api.features.webhooks);
-      }
+      // if (editData.api.features) {
+      //   await this.checkboxToggleById('feature-prequalification', !!editData.api.features.prequalification);
+      //   await this.checkboxToggleById('feature-preapproval', !!editData.api.features.preapproval);
+      //   await this.checkboxToggleById('feature-full-application', !!editData.api.features.fullApplication);
+      //   await this.checkboxToggleById('feature-document-upload', !!editData.api.features.documentUpload);
+      //   await this.checkboxToggleById('feature-renewal', !!editData.api.features.renewal);
+      //   await this.checkboxToggleById('feature-webhooks', !!editData.api.features.webhooks);
+      // }
     }
 
     // EMAIL
