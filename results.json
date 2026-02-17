@@ -102,12 +102,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1827,
+                  "duration": 2632,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-02-17T19:18:00.565Z",
+                  "startTime": "2026-02-17T21:28:13.501Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -129,92 +129,155 @@
       ]
     },
     {
-      "title": "regression/GravityFormsApplication.spec.js",
-      "file": "regression/GravityFormsApplication.spec.js",
+      "title": "regression/Leads/importcsv.spec.js",
+      "file": "regression/Leads/importcsv.spec.js",
       "column": 0,
       "line": 0,
-      "specs": [],
-      "suites": [
+      "specs": [
         {
-          "title": "Gravity forms -> CRM verification",
-          "file": "regression/GravityFormsApplication.spec.js",
-          "line": 7,
-          "column": 6,
-          "specs": [
+          "title": "Import valid csv",
+          "ok": true,
+          "tags": [],
+          "tests": [
             {
-              "title": "submit external application and verify in CRM",
-              "ok": true,
-              "tags": [],
-              "tests": [
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
                 {
-                  "timeout": 30000,
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25514,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-02-17T21:28:17.283Z",
                   "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "desktop-chromium",
-                  "projectName": "desktop-chromium",
-                  "results": [
+                  "attachments": [
                     {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 16987,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "steps": [
-                        {
-                          "title": "Open and fill Gravity Forms",
-                          "duration": 16928,
-                          "steps": [
-                            {
-                              "title": "Expect \"✅ BankStatement1.pdf cargado correctamente.\"",
-                              "duration": 13
-                            },
-                            {
-                              "title": "Expect \"✅ BankStatement2.pdf cargado correctamente.\"",
-                              "duration": 9
-                            },
-                            {
-                              "title": "Expect \"✅ BankStatement3.pdf cargado correctamente.\"",
-                              "duration": 9
-                            },
-                            {
-                              "title": "Verify records in CRM via Global Search",
-                              "duration": 8658
-                            }
-                          ]
-                        }
-                      ],
-                      "startTime": "2026-02-17T19:18:02.822Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-GravityFormsApp-f11c8-plication-and-verify-in-CRM-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Import-valid-csv-desktop-chromium/video.webm"
                     }
-                  ],
-                  "status": "expected"
+                  ]
                 }
               ],
-              "id": "42f64f83061393f1f065-956813d3280690f4e77c",
-              "file": "regression/GravityFormsApplication.spec.js",
-              "line": 12,
-              "column": 3
+              "status": "expected"
             }
-          ]
+          ],
+          "id": "0b19364f5333501c494d-47f4768ffb7eab57b5ca",
+          "file": "regression/Leads/importcsv.spec.js",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "Handle duplicated csv",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12642,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-02-17T21:28:43.088Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Handle-duplicated-csv-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0b19364f5333501c494d-043e83c031b6461557b2",
+          "file": "regression/Leads/importcsv.spec.js",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "Delete imported leads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16602,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Daenerys Playwright?\n"
+                    },
+                    {
+                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Aegon Playwright?\n"
+                    },
+                    {
+                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Rhaenyra Playwright?\n"
+                    },
+                    {
+                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Jahaerys Playwright?\n"
+                    },
+                    {
+                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Baela Playwright?\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-02-17T21:28:55.733Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Delete-imported-leads-desktop-chromium/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0b19364f5333501c494d-ff9c94d96b2933b0f347",
+          "file": "regression/Leads/importcsv.spec.js",
+          "line": 50,
+          "column": 1
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-02-17T19:18:00.141Z",
-    "duration": 19802.939000000002,
-    "expected": 2,
+    "startTime": "2026-02-17T21:28:13.163Z",
+    "duration": 59262.126000000004,
+    "expected": 4,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
