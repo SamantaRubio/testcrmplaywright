@@ -154,7 +154,7 @@ export class ContactsPage extends BasePage {
         await nameLink.scrollIntoViewIfNeeded();
         await nameLink.click();
         await expect(this.page.locator('h1.text-3xl.font-bold')).toContainText(firstname);
-      }
+    }
 
     /**
      * Selects account from autocomplete (Stimulus) 
@@ -745,7 +745,99 @@ export class ContactsPage extends BasePage {
         `${ddNo0} ${monL} ${yyyy}`,
       ];
     }
-    
 
+    async verifyInputsFromGravityF(fieldKey, newValue){
+      const root = this.contactFieldRootByKey(fieldKey);
+      await expect(root).toBeVisible({ timeout: 20000 });
+      await root.scrollIntoViewIfNeeded();
+
+      const expectedVariants = this.buildExpectedVariants(newValue);
+
+      await expect
+        .poll(async () => {
+          const shown = this.normalizeText(await root.innerText());
+          return expectedVariants.some(v =>
+            shown.includes(this.normalizeText(v))
+          );
+        }, { timeout: 20000 })
+        .toBe(true);
+    }
+
+    async validateDateGravityF(fieldKey, isoDate){
+      const id = await this.getContactIdFromShow();
+      const span = this.page.locator(`#contact-${id}-${fieldKey}`).first();
+      const variants = this.buildDateVariants2(isoDate).map(v => this.normalizeText(v));
+    
+      await expect
+        .poll(async () => {
+          const shownRaw = await span.innerText();
+          const shown = this.normalizeText(shownRaw);
+    
+          if (!shown || shown.includes('n/a')) return false;
+          return variants.some(v => shown.includes(v));
+        }, { timeout: 20000 })
+        .toBe(true);
+    }
+
+    buildDateVariants2(dateInput) {
+      const s = String(dateInput).trim();
+    
+      let yyyy, mm, dd;
+    
+      // ISO: YYYY-MM-DD
+      let m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (m) {
+        [, yyyy, mm, dd] = m;
+      } else {
+        // US: MM/DD/YYYY o M/D/YYYY
+        m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+        if (m) {
+          const [, m1, d1, y1] = m;
+          yyyy = y1;
+          mm = String(m1).padStart(2, '0');
+          dd = String(d1).padStart(2, '0');
+        } else {
+          // si llega raro, regresamos el raw
+          return [s];
+        }
+      }
+    
+      const month = Number(mm);
+      const day = Number(dd);
+    
+      const monthsShort = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+      const monthsLong  = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+    
+      const monS = monthsShort[month - 1];
+      const monL = monthsLong[month - 1];
+    
+      const mmNo0 = String(month);
+      const ddNo0 = String(day);
+    
+      return [
+        // ISO
+        `${yyyy}-${mm}-${dd}`,
+    
+        // US numérico
+        `${mm}/${dd}/${yyyy}`,
+        `${mmNo0}/${ddNo0}/${yyyy}`,
+    
+        // D/M/Y
+        `${dd}/${mm}/${yyyy}`,
+        `${ddNo0}/${mmNo0}/${yyyy}`,
+    
+        // Textuales (tu UI usa "January 01, 1990")
+        `${monL} ${dd}, ${yyyy}`,      // january 01, 1990
+        `${monL} ${ddNo0}, ${yyyy}`,   // january 1, 1990
+        `${monS} ${dd}, ${yyyy}`,
+        `${monS} ${ddNo0}, ${yyyy}`,
+    
+        `${dd} ${monL} ${yyyy}`,
+        `${ddNo0} ${monL} ${yyyy}`,
+        `${dd} ${monS} ${yyyy}`,
+        `${ddNo0} ${monS} ${yyyy}`,
+      ];
+    }
+    
 
 }

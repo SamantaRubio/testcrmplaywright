@@ -448,54 +448,6 @@ export class OpportunityDetails extends BasePage {
       expect(contentType).toContain('application/pdf');
     }
 
-    // async openFirstDocumentPreviewAndVerify() {
-    //   await expect(this.firstDocumentCard).toBeVisible({ timeout: 20000 });
-    //   await expect(this.firstDocumentOpenBtn).toBeVisible();
-  
-    //   await this.firstDocumentOpenBtn.click();
-  
-    //   await expect(this.documentModal).toBeVisible({ timeout: 20000 });
-    //   await expect(this.documentModalTitle).toBeVisible();
-    //   await expect(this.documentModalSubtitle).toBeVisible();
-
-    //   await expect(this.documentModalType).toBeVisible();
-    //   await expect(this.documentModalFileSize).toBeVisible();
-    //   await expect(this.documentModalUploadDate).toBeVisible();
-  
-    //   const documentTypeText = (await this.documentModalType.innerText()).trim();
-    //   const fileSizeText = (await this.documentModalFileSize.innerText()).trim();
-    //   const uploadDateText = (await this.documentModalUploadDate.innerText()).trim();
-  
-    //   expect(documentTypeText.length).toBeGreaterThan(0);
-    //   expect(fileSizeText.length).toBeGreaterThan(0);
-    //   expect(uploadDateText.length).toBeGreaterThan(0);
-  
-    //   if (documentTypeText.toLowerCase() === 'bank statement') {
-    //     await expect(this.documentModalPeriod).toBeVisible();
-  
-    //     const periodText = (await this.documentModalPeriod.innerText()).trim();
-  
-    //     expect(periodText).not.toBe('');
-    //     expect(periodText).not.toBe('-');
-    //   }
-  
-    //   await expect(this.documentModalPreviewIframe).toBeVisible({ timeout: 20000 });
-  
-    //   const src = await this.documentModalPreviewIframe.getAttribute('src');
-    //   expect(src).toBeTruthy();
-  
-    //   const absoluteUrl = new URL(src, this.page.url()).toString();
-    //   const resp = await this.page.request.get(absoluteUrl);
-    //   expect(resp.ok()).toBeTruthy();
-  
-    //   const ct = (resp.headers()['content-type'] || '').toLowerCase();
-    //   expect(ct.length).toBeGreaterThan(0);
-
-    //   await expect(this.documentModalCloseBtn).toBeVisible();
-    //   await this.documentModalCloseBtn.click();
-    //   await expect(this.documentModal).toBeHidden({ timeout: 20000 });
-    // }
-
     async openFirstDocumentPreviewAndVerify() {
       // Locators más directos (tu snapshot muestra este id)
       const modal = this.page.locator('#document-preview-modal');
@@ -564,8 +516,7 @@ export class OpportunityDetails extends BasePage {
       await expect(this.documentModalCloseBtn).toBeVisible();
       await this.documentModalCloseBtn.click();
       await expect(modal).toHaveClass(/hidden/, { timeout: 20000 });
-    }
-     
+    } 
     
     async verifyModalNavigationArrowsWork() {
       const modal = this.page.locator('#document-preview-modal:not(.hidden)');
@@ -649,7 +600,120 @@ export class OpportunityDetails extends BasePage {
       }
     }
     
-    
-    
+    // Gravity froms validations
+    oppFieldRootByKey(fieldKey) {
+      return this.page.locator(`[id$="-${fieldKey}"]`).first();
+    }
+
+    buildExpectedVariants(newValue) {
+      const raw = String(newValue || "").trim();
+      const { host, pathname } = this.safeUrlParts(raw);
+
+      const pathNoSlash = pathname.replace(/^\/+/, "");
+      const pathWithSlash = pathNoSlash ? `/${pathNoSlash}` : "";
+
+      const variants = new Set();
+
+      if (raw) variants.add(this.normalizeText(raw));
+      if (host && pathNoSlash) variants.add(`${host}/${pathNoSlash}`);
+      if (pathNoSlash) variants.add(pathNoSlash);
+      if (pathWithSlash) variants.add(pathWithSlash);
+
+      return [...variants].filter(Boolean);
+    }
+
+    normalizeText(s) {
+      return String(s || "")
+        .trim()
+        .toLowerCase()
+        .replace(/^https?:\/\//, "")
+        .replace(/\/+$/, "");
+    }
+  
+    safeUrlParts(raw) {
+        const s = String(raw || "").trim();
+        try {
+          const u = new URL(s.includes("://") ? s : `https://${s}`);
+          return {
+            host: (u.host || "").toLowerCase(),
+            pathname: (u.pathname || "").replace(/\/+$/, ""),
+          };
+        } catch {
+          return { host: "", pathname: "" };
+        }
+    }
+
+    async verifyInputsFromGravityF(fieldKey, newValue){
+      const root = this.oppFieldRootByKey(fieldKey);
+      await expect(root).toBeVisible({ timeout: 20000 });
+      await root.scrollIntoViewIfNeeded();
+
+      const expectedVariants = this.buildExpectedVariants(newValue);
+
+      await expect
+        .poll(async () => {
+          const shown = this.normalizeText(await root.innerText());
+          return expectedVariants.some(v =>
+            shown.includes(this.normalizeText(v))
+          );
+        }, { timeout: 20000 })
+        .toBe(true);
+    }
+
+    async validateBankStatementsCount({ expectedCount = 3 } = {}) {
+      // 1) contenedor de Documents (evita agarrar otros lists)
+      const root = this.page.locator('[data-controller="document-upload"]').first();
+      await expect(root).toBeVisible({ timeout: 20000 });
+
+      // 2) items de bank statement (esto es súper estable)
+      const bankItems = root.locator('[id^="document_"][data-document-category="bank statement"]');
+      await expect(bankItems).toHaveCount(expectedCount, { timeout: 20000 });
+
+      // 3) validar que sus nombres empiecen con "bank statement" (flexible)
+      //    - acepta: "BankStatement123.pdf", "bank statement 123.pdf", etc.
+      const startsWith = /^bank\s*statement/i;
+
+      await expect.poll(async () => {
+        const count = await bankItems.count();
+        if (count !== expectedCount) return false;
+
+        for (let i = 0; i < count; i++) {
+          const item = bankItems.nth(i);
+
+          // preferimos data-document-name (más “source of truth” que el UI)
+          const rawName =
+            (await item.getAttribute('data-document-name')) ||
+            (await item.locator('button[id^="document-link-"]').first().innerText().catch(() => '')) ||
+            '';
+
+          const name = String(rawName).trim();
+          if (!startsWith.test(name)) return false;
+        }
+        return true;
+      }, { timeout: 20000 }).toBe(true);
+    }
+
+    async validateRelatedSpansGravityF(account, contactName, contactEmail, contactPhone){
+      const accountLink = this.page.locator('#opportunity-account-link');
+      await expect(accountLink).toHaveText(account, { timeout: 20000 });
+
+      const relatedAccountCard = this.page.locator('#opportunity-related-account-link');
+      const relatedAccountName = relatedAccountCard.locator('div.text-sm.font-semibold.text-gray-900').first();
+      await expect(relatedAccountName).toHaveText(account, { timeout: 20000 });
+
+      const contactCard = this.page.locator('[id^="opportunity-contact-link-"]').first();
+
+      // Nombre (h4)
+      await expect(contactCard.locator('h4').first())
+        .toHaveText(contactName, { timeout: 20000 });
+
+      // Email (p que contiene @)
+      await expect(contactCard.locator('p', { hasText: '@' }).first())
+        .toHaveText(contactEmail, { timeout: 20000 });
+
+      // Phone (p que contiene +)
+      await expect(contactCard.locator('p', { hasText: '+' }).first())
+        .toContainText(contactPhone, { timeout: 20000 });
+    }
 
 }

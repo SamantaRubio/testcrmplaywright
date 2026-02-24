@@ -21,7 +21,10 @@
     "homeZip": "78704-5368",
     "ownership": "100"
   },
-  "funding": { "capital": "25000" },
+  "funding": { 
+    "capital": "25000",
+    "capitalVerification":"$25,000"
+  },
   "pdfs": [
     "tests/fixtures/BankStatement1.pdf",
     "tests/fixtures/BankStatement2.pdf",

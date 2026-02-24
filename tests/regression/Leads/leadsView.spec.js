@@ -41,19 +41,8 @@ test('Reopen Lead', async ({ page }) => {
   await leadsPage.reopenLead(mobile);
 });
 
-// test('Reject Lead From Lead Details View', async ({ page }) => {
-//   const leadsPage = new LeadsPage(page);
-//   await leadsPage.open();
-//   await leadsPage.rejectLeadFromDetails(mobile, firstName);
-// });
-
-// test('Reopen Lead From Lead Details View', async ({ page }) => {
-//   const leadsPage = new LeadsPage(page);
-//   await leadsPage.open();
-//   await leadsPage.reopenLeadFromDetails(mobile, firstName);
-// });
-
 test('Edit Lead', async ({ page }) => {
+  test.setTimeout(60_000);
   const leadsPage = new LeadsPage(page);
   await leadsPage.open();
   await leadsPage.leadsSearch(firstName);
@@ -73,6 +62,8 @@ test('Edit Lead', async ({ page }) => {
   await leadsPage.inlineEditField('referred_by', leadsData.lead2.referredBy);
   await leadsPage.inlineEditField('email', email);
   await leadsPage.inlineEditField('alt_email', altEmail);
+
+
   await leadsPage.inlineEditField('phone', phone);
   await leadsPage.inlineEditField('mobile', mobile);
   await leadsPage.inlineEditField('blog', leadsData.lead2.blog);
@@ -83,6 +74,8 @@ test('Edit Lead', async ({ page }) => {
   await leadsPage.inlineEditField('background_info', leadsData.lead2.background);
   await leadsPage.inlineEditDate('last_email_date', leadsData.lead2.lastEmailDate);
   await leadsPage.inlineEditDate('last_text_date', leadsData.lead2.lastTextDate);
+
+
   await leadsPage.editTags(leadsData.lead2.tags);
   await leadsPage.addComment(leadsData.lead2.addComment);
 

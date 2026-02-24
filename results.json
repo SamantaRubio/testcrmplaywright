@@ -102,12 +102,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2632,
+                  "duration": 2947,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-02-17T21:28:13.501Z",
+                  "startTime": "2026-02-24T19:03:00.677Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -129,155 +129,68 @@
       ]
     },
     {
-      "title": "regression/Leads/importcsv.spec.js",
-      "file": "regression/Leads/importcsv.spec.js",
+      "title": "regression/accountsView.spec.js",
+      "file": "regression/accountsView.spec.js",
       "column": 0,
       "line": 0,
-      "specs": [
+      "specs": [],
+      "suites": [
         {
-          "title": "Import valid csv",
-          "ok": true,
-          "tags": [],
-          "tests": [
+          "title": "Accounts",
+          "file": "regression/accountsView.spec.js",
+          "line": 5,
+          "column": 15,
+          "specs": [
             {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "desktop-chromium",
-              "projectName": "desktop-chromium",
-              "results": [
+              "title": "Create and search account",
+              "ok": true,
+              "tags": [],
+              "tests": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 25514,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-02-17T21:28:17.283Z",
+                  "timeout": 30000,
                   "annotations": [],
-                  "attachments": [
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
                     {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Import-valid-csv-desktop-chromium/video.webm"
-                    }
-                  ]
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "0b19364f5333501c494d-47f4768ffb7eab57b5ca",
-          "file": "regression/Leads/importcsv.spec.js",
-          "line": 15,
-          "column": 1
-        },
-        {
-          "title": "Handle duplicated csv",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "desktop-chromium",
-              "projectName": "desktop-chromium",
-              "results": [
-                {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 12642,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-02-17T21:28:43.088Z",
-                  "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Handle-duplicated-csv-desktop-chromium/video.webm"
-                    }
-                  ]
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "0b19364f5333501c494d-043e83c031b6461557b2",
-          "file": "regression/Leads/importcsv.spec.js",
-          "line": 33,
-          "column": 1
-        },
-        {
-          "title": "Delete imported leads",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "desktop-chromium",
-              "projectName": "desktop-chromium",
-              "results": [
-                {
-                  "workerIndex": 1,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 16602,
-                  "errors": [],
-                  "stdout": [
-                    {
-                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Daenerys Playwright?\n"
-                    },
-                    {
-                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Aegon Playwright?\n"
-                    },
-                    {
-                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Rhaenyra Playwright?\n"
-                    },
-                    {
-                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Jahaerys Playwright?\n"
-                    },
-                    {
-                      "text": "➡️ Dialog: confirm Are you sure you want to delete this Baela Playwright?\n"
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2933,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-24T19:03:04.384Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-accountsView-Accounts-Create-and-search-account-desktop-chromium/video.webm"
+                        }
+                      ]
                     }
                   ],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-02-17T21:28:55.733Z",
-                  "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-Leads-importcsv-Delete-imported-leads-desktop-chromium/video.webm"
-                    }
-                  ]
+                  "status": "expected"
                 }
               ],
-              "status": "expected"
+              "id": "658990770dff91cac53c-b8c443dd4df40b14203a",
+              "file": "regression/accountsView.spec.js",
+              "line": 7,
+              "column": 5
             }
-          ],
-          "id": "0b19364f5333501c494d-ff9c94d96b2933b0f347",
-          "file": "regression/Leads/importcsv.spec.js",
-          "line": 50,
-          "column": 1
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-02-17T21:28:13.163Z",
-    "duration": 59262.126000000004,
-    "expected": 4,
+    "startTime": "2026-02-24T19:03:00.282Z",
+    "duration": 7408.785,
+    "expected": 2,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
