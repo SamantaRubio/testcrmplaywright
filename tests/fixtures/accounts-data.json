@@ -1,0 +1,27 @@
+{
+    "name": "Playwright Account {{timestamp}}",
+    "industry": "Technology",
+    "dba": "DBA {{timestamp}}",
+    "entityType": "LLC",
+    "businessStartDate": "2020-01-15",
+    "annualRevenue": "2000000",
+    "taxId": "TAX-{{timestamp}}",
+    "source": "Referral",
+    "bankAccounts": "2",
+    "avgMonthlyDeposits": "25000",
+    "website": "https://examplepw.com",
+    "assignedTo": "Myself",
+    "seasonalRevenue": true,
+    "isActive": true,
+    "businessDescription": "Created by Playwright automated test",
+    "notes": "Notes from Playwright",
+    "phone": "(555) 123-4567",
+    "fax": "(555) 123-4568",
+    "billing": {
+      "street1": "123 Main St",
+      "street2": "Suite 100",
+      "city": "Austin",
+      "state": "Texas",
+      "zipcode": "78701"
+    }
+  }

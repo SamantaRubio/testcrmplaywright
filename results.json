@@ -102,20 +102,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2947,
+                  "duration": 2862,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-02-24T19:03:00.677Z",
+                  "startTime": "2026-03-05T17:54:26.487Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/setup-auth.setup.js-save-authenticated-storage-setup/video.webm"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -157,20 +151,14 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2933,
+                      "duration": 8106,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-24T19:03:04.384Z",
+                      "startTime": "2026-03-05T17:54:29.778Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-accountsView-Accounts-Create-and-search-account-desktop-chromium/video.webm"
-                        }
-                      ]
+                      "attachments": []
                     }
                   ],
                   "status": "expected"
@@ -178,7 +166,149 @@
               ],
               "id": "658990770dff91cac53c-b8c443dd4df40b14203a",
               "file": "regression/accountsView.spec.js",
-              "line": 7,
+              "line": 18,
+              "column": 5
+            },
+            {
+              "title": "Validate new account",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7357,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-05T17:54:37.998Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "658990770dff91cac53c-ffd52663978f12b99c0e",
+              "file": "regression/accountsView.spec.js",
+              "line": 30,
+              "column": 5
+            },
+            {
+              "title": "Deactivate Account",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12187,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-05T17:54:45.356Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "658990770dff91cac53c-9aaf3c3793d09d6143e5",
+              "file": "regression/accountsView.spec.js",
+              "line": 40,
+              "column": 5
+            },
+            {
+              "title": "Activate Account",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 27086,
+                      "error": {
+                        "message": "Error: \u001b[31mTimed out 15000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('#accounts-container').locator('tr').filter({ has: locator('a').filter({ hasText: 'Playwright Account 1772733269773' }) }).first().locator('form[action$=\"/nfjkdsnjf\"] button').first()\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#accounts-container').locator('tr').filter({ has: locator('a').filter({ hasText: 'Playwright Account 1772733269773' }) }).first().locator('form[action$=\"/nfjkdsnjf\"] button').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[31mTimed out 15000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('#accounts-container').locator('tr').filter({ has: locator('a').filter({ hasText: 'Playwright Account 1772733269773' }) }).first().locator('form[action$=\"/nfjkdsnjf\"] button').first()\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#accounts-container').locator('tr').filter({ has: locator('a').filter({ hasText: 'Playwright Account 1772733269773' }) }).first().locator('form[action$=\"/nfjkdsnjf\"] button').first()\u001b[22m\n\n    at AccountsPage.expectDeactivateButtonInRow (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/AccountsPage.js:303:35)\n    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/accountsView.spec.js:57:9",
+                        "location": {
+                          "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/AccountsPage.js",
+                          "column": 35,
+                          "line": 303
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mpages/AccountsPage.js:303\n\n\u001b[0m \u001b[90m 301 |\u001b[39m\n \u001b[90m 302 |\u001b[39m       \u001b[36mconst\u001b[39m deactivateBtn \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mlocator(\u001b[32m'form[action$=\"/nfjkdsnjf\"] button'\u001b[39m )\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 303 |\u001b[39m       \u001b[36mawait\u001b[39m expect(deactivateBtn)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 304 |\u001b[39m   }\n \u001b[90m 305 |\u001b[39m\n \u001b[90m 306 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/AccountsPage.js",
+                            "column": 35,
+                            "line": 303
+                          },
+                          "message": "Error: \u001b[31mTimed out 15000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('#accounts-container').locator('tr').filter({ has: locator('a').filter({ hasText: 'Playwright Account 1772733269773' }) }).first().locator('form[action$=\"/nfjkdsnjf\"] button').first()\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#accounts-container').locator('tr').filter({ has: locator('a').filter({ hasText: 'Playwright Account 1772733269773' }) }).first().locator('form[action$=\"/nfjkdsnjf\"] button').first()\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpages/AccountsPage.js:303\n\n\u001b[0m \u001b[90m 301 |\u001b[39m\n \u001b[90m 302 |\u001b[39m       \u001b[36mconst\u001b[39m deactivateBtn \u001b[33m=\u001b[39m row\u001b[33m.\u001b[39mlocator(\u001b[32m'form[action$=\"/nfjkdsnjf\"] button'\u001b[39m )\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 303 |\u001b[39m       \u001b[36mawait\u001b[39m expect(deactivateBtn)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 304 |\u001b[39m   }\n \u001b[90m 305 |\u001b[39m\n \u001b[90m 306 |\u001b[39m }\u001b[0m\n\u001b[2m    at AccountsPage.expectDeactivateButtonInRow (/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/AccountsPage.js:303:35)\u001b[22m\n\u001b[2m    at /Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/regression/accountsView.spec.js:57:9\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-05T17:54:57.545Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-accountsView-Accounts-Activate-Account-desktop-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-accountsView-Accounts-Activate-Account-desktop-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/test-results/regression-accountsView-Accounts-Activate-Account-desktop-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/Usuario/Documents/DirectCashGroup/newtestRepo/DirectCashGroupAutomation/tests/pages/AccountsPage.js",
+                        "column": 35,
+                        "line": 303
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "658990770dff91cac53c-257fb8504500164942ab",
+              "file": "regression/accountsView.spec.js",
+              "line": 50,
               "column": 5
             }
           ]
@@ -188,11 +318,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-02-24T19:03:00.282Z",
-    "duration": 7408.785,
-    "expected": 2,
+    "startTime": "2026-03-05T17:54:26.055Z",
+    "duration": 58599.842000000004,
+    "expected": 4,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
